@@ -5,7 +5,6 @@ public class Test1 {
 		
 		System.out.println("첫번째 커밋");
 		
-		
 	}
 
 }
