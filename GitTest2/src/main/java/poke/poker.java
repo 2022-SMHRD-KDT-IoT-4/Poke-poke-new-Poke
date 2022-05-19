@@ -19,7 +19,7 @@ public class poker extends HttpServlet {
 	
 		PrintWriter out = response.getWriter();
 		out.print("배고파");
-	
+	System.out.println("안뇽?");
 		
 	}
 
