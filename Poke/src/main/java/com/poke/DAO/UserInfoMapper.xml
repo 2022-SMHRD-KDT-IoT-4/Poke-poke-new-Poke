@@ -7,4 +7,7 @@
 	<select id="UserLogin" parameterType="User" resultType="User">
 		select * from User_Info where id = #{id} and password = #{password}
 	</select>
+	<insert id="RegisterUser" parameterType="User">
+		insert into User_Info values (#{id},#{password},#{nickname},#{email})
+	</insert>
 </mapper>

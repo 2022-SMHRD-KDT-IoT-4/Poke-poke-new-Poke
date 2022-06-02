@@ -12,5 +12,10 @@
 		UserInfoVO user = (UserInfoVO)session.getAttribute("user");
 		out.print(user.getId()+"님 환영합니다.");
 	%>
+	<br>
+	<form action="userLogout.do">
+		<input type="submit" value="로그아웃">
+	</form>
+	
 </body>
 </html>

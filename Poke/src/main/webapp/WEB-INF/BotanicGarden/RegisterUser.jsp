@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>RegisterUser</title>
 </head>
 <body>
-	<form action="userLogin.do">
+	<form action="registerUser.do">
 		ID : <input type="text" name="id"><br>
 		PASSWORD : <input type="password" name="password"><br>
 		NICKNAME : <input type="text" name="nickname"><br>
 		EMAIL : <input type="email" name="email"><br>
-		<input type="submit" value="로그인">
+		<input type="submit" value="회원가입">
 	</form>
 </body>
 </html>

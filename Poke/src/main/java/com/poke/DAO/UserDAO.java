@@ -26,4 +26,10 @@ public class UserDAO {
 		session.close();
 		return result;
 	}
+	public int RegisterUser(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.insert("RegisterUser", vo);
+		session.close();
+		return row;
+	}
 }

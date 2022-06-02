@@ -10,7 +10,7 @@
 	<form action="userLogin.do">
 		ID : <input type="text" name="id"><br>
 		PASSWORD : <input type="password" name="password"><br>
-		<input type="submit" value="로그인">
+		<input type="submit" value="로그인"><a href="viewRegisterUser.do">회원가입</a>
 	</form>
 </body>
 </html>
