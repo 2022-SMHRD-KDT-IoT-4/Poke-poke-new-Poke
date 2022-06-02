@@ -10,4 +10,16 @@
 	<insert id="RegisterUser" parameterType="User">
 		insert into User_Info values (#{id},#{password},#{nickname},#{email})
 	</insert>
+	<delete id="UserSecession" parameterType="User">
+		delete from User_Info where id=#{id}
+	</delete>
+	<update id="UpdateNickname" parameterType="User">
+		update User_Info set nickname = #{nickname} where id = #{id}
+	</update>
+	<update id="UpdatePassword" parameterType="User">
+		update User_Info set password = #{password} where id = #{id}
+	</update>
+	<update id="UpdateEmail" parameterType="User">
+		update User_Info set email = #{email} where id = #{id}
+	</update>
 </mapper>

@@ -32,4 +32,28 @@ public class UserDAO {
 		session.close();
 		return row;
 	}
+	public int UserSecession(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.delete("UserSecession", vo);
+		session.close();
+		return row;
+	}
+	public int UpdateNickname(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("UpdateNickname", vo);
+		session.close();
+		return row;
+	}
+	public int UpdatePassowrd(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("UpdatePassword", vo);
+		session.close();
+		return row;
+	}
+	public int UpdateEmail(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("UpdateEmail", vo);
+		session.close();
+		return row;
+	}
 }

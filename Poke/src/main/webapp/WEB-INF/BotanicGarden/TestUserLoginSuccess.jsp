@@ -15,6 +15,12 @@
 	<br>
 	<form action="userLogout.do">
 		<input type="submit" value="로그아웃">
+	</form> <br>
+	<form action="userSecession.do">
+		<input type="submit" value="회원탈퇴">	
+	</form>
+	<form action="viewUpdatePage.do">
+		<input type="submit" value="회원정보수정">	
 	</form>
 	
 </body>
