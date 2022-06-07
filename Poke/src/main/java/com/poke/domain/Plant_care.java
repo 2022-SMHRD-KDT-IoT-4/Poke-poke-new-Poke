@@ -11,8 +11,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Plant_care {
-	private int plantcare_seq;
-	@NonNull int plant_seq;
+	@NonNull String plant_nickname;
 	@NonNull String last_date;
 	private String plant_diary;
 	private int plant_height;

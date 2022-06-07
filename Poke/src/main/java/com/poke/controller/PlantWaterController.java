@@ -29,7 +29,7 @@ public class PlantWaterController implements Controller {
 		System.out.println(plant_care); // 물 줄 날과 식물 고유 번호 불러오기
 		
 
-		return "planttest";
+		return "Calendar";
 
 
 	

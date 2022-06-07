@@ -7,10 +7,13 @@
 <mapper namespace="com.poke.DAO.Plant_careDAO">
 
 	<!-- plant_care 데이터 -->
-	<select id = "plant_CareSelcet" resultType="Plant_care">
-		select * from plant_care where plant_seq = #{plant_seq}
-		
-		
+	<select id = "getAllPlantList" resultType="Plant_care">
+		select (select g.plant_nickname
+   			from garden g
+    		where p.plant_seq = g.plant_seq) as plant_nickname,
+    		p.last_date, p.plant_diary, p.plant_height
+    	from plant_care p
+		where plant_seq = #{plant_seq}
 	</select>
 	
 	<!-- pant_care 날짜에서 cycle 추가 된 값 가져오기 -->
