@@ -37,6 +37,22 @@ public class Plant_careDAO {
 		return nextDate; 
 	}
 	
+	public void plant_careInsert(Plant_care plant_care) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.insert("plant_careInsert", plant_care);
+		session.commit();
+		session.close();
+	}
+
+	// plant_care 정보 업데이트하기 
+	
+	public void plant_careUpdate(Plant_care vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.update("plant_careUpdate", vo);
+		session.commit();
+		session.close();
+	}
+	
 	
 	
 	

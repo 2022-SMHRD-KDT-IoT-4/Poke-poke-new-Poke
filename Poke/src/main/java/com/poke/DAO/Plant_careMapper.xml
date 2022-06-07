@@ -22,6 +22,21 @@
 		from plant_care where plant_seq = #{plant_seq}
 	</select>
 
+	<!-- plant_care 정보 입력하기 -->
+	<insert id="plant_careInsert" parameterType = "Plant_care">
+		insert into plant_care 
+		values
+		(plantcare_seq.nextval, (select g.plant_seq from garden g
+		where g.plant_nickname = #{plant_nickname})
+		,  sysdate, #{plant_diary}, #{plant_height})
+	</insert>
+
+	<!-- plant_care 정보 업데이트 하기  -->
+	<update id="plant_careUpdate" parameterType="Plant_care">
+	update plant_care
+	set plant_diary = #{plant_diary}, plant_height =#{plant_height} where to_char(last_date,'yyyy-mm-dd hh12:mi:ss')= #{last_date}
+	
+	</update>
 
 
 

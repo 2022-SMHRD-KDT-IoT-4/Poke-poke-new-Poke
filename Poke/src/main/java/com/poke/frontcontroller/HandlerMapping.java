@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import com.poke.controller.Controller;
 import com.poke.controller.PlantCalendarViewController;
+import com.poke.controller.PlantCareInsertController;
+import com.poke.controller.PlantCareUpdateController;
 import com.poke.controller.PlantWaterController;
 import com.poke.controller.RegisterUserController;
 import com.poke.controller.UserLoginController;
@@ -21,6 +23,8 @@ public class HandlerMapping {
 		mappings.put("/viewJoin.do", new ViewJoinController());
 		mappings.put("/plantwater.do", new PlantWaterController());
 		mappings.put("/plantCalendar.do", new PlantCalendarViewController());
+		mappings.put("/plantCalendarInsert.do", new PlantCareInsertController());
+		mappings.put("/plantCalendarUpdate.do", new PlantCareUpdateController());
 
 	}
 	
