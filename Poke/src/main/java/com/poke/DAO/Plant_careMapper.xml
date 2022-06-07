@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.poke.DAO.Plant_careDAO">
+
+	<!-- plant_care 데이터 -->
+	<select id = "plant_CareSelcet" resultType="Plant_care">
+		select * from plant_care where plant_seq = #{plant_seq}
+		
+		
+	</select>
+	
+	<!-- pant_care 날짜에서 cycle 추가 된 값 가져오기 -->
+	<select id = "waterNextDay" parameterType = "Plant_Garden" resultType="String" >
+		select max(last_date+#{cycle}) keep (dense_rank last order by last_date) as last_date 
+		from plant_care where plant_seq = #{plant_seq}
+	</select>
+
+
+
+
+</mapper>
