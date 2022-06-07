@@ -10,6 +10,7 @@ import com.poke.controller.PlantWaterController;
 import com.poke.controller.RegisterUserController;
 import com.poke.controller.UserLoginController;
 import com.poke.controller.ViewJoinController;
+import com.poke.controller.ViewLoginController;
 import com.poke.controller.ViewMainController;
 
 public class HandlerMapping {
@@ -21,6 +22,7 @@ public class HandlerMapping {
 		mappings.put("/registerUser.do", new RegisterUserController());
 		mappings.put("/viewMain.do", new ViewMainController());
 		mappings.put("/viewJoin.do", new ViewJoinController());
+		mappings.put("/viewLogin.do", new ViewLoginController());
 		mappings.put("/plantwater.do", new PlantWaterController());
 		mappings.put("/plantCalendar.do", new PlantCalendarViewController());
 		mappings.put("/plantCalendarInsert.do", new PlantCareInsertController());
