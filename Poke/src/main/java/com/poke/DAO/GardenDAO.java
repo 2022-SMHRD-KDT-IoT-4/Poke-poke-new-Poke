@@ -47,24 +47,23 @@ public class GardenDAO {
 		
 	}
 	
-	// 사용자별 식물 데이터 가져오기
-	@SuppressWarnings("null")
-	public ArrayList<Plant_care> garden_plant_care(String id) {
+	// 사용자가 키우는 식물의 plant_care 정보 모두 가져오기
+	
+	public List<List> getAllPlantList(String id){
+		SqlSession session = sqlSessionFactory.openSession();
 		List<Garden> list = gardenSelect(id);
-		int plant_seq;
-		Plant_care plant_care;
-		ArrayList<Plant_care> result = new ArrayList<Plant_care>();
-
-		for(Garden garden :list) {
-			plant_seq = garden.getPlant_seq();
-			plant_care = Plant_care.plant_CareSelcet(plant_seq);
-			result.add(plant_care);
+		
+		List<Plant_care> calendarList = null;
+		List<List> result = new ArrayList<List>();
+		for(Garden garden : list) {
+			calendarList = session.selectList("getAllPlantList",garden.getPlant_seq());
+			result.add(calendarList);
 		}
+		session.close();
 		return result;
 	}
 	
 
-	
 	// 사용자별 키우는 식물 기르기 last_date와 사용자가 키우는 식물 종류 데이터 가져오기
 	public ArrayList<Plant_care> waterNext(String id) {
 		ArrayList<Plant_care> plant_care = new ArrayList<Plant_care>();
@@ -75,28 +74,29 @@ public class GardenDAO {
 		Plant plant;
 		String date;
 		int plant_number;
+		String plant_nickname;
 		int plant_seq;
 		int cycle;
 		
 		
 		List<Garden> garden_list = gardenSelect(id);
-		
-		
-		
-		
 		for(Garden garden : garden_list) {
 			plant_number=garden.getPlant_number();
 			plant_seq=garden.getPlant_seq();
 			
+			// 식물에 물주기 가져오기
 			plant = dao.plantSelectOne(plant_number);
 			cycle = plant.getCycle();
 			plant_garden.setCycle(cycle);
 			plant_garden.setPlant_seq(plant_seq);
 			
-			date = caredao.waterNextDay(plant_garden);
-			plantCare = new Plant_care(); // 절대 빼지 말 것
-			plantCare.setPlant_seq(plant_seq);
 			
+			// 식물 마지막 물 주는 날 
+			date = caredao.waterNextDay(plant_garden);
+			
+			// data 가져오기 및 입력
+			plantCare = new Plant_care(); // 절대 빼지 말 것
+			plantCare.setPlant_nickname(garden.getPlant_nickname());
 			plantCare.setLast_date(date);
 			plant_care.add(plantCare);
 			
@@ -105,7 +105,6 @@ public class GardenDAO {
 		return plant_care;
 		
 	}
-	
 	
 	
 	

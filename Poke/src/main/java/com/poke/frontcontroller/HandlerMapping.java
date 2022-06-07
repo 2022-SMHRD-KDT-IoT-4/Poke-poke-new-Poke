@@ -3,6 +3,7 @@ package com.poke.frontcontroller;
 import java.util.HashMap;
 
 import com.poke.controller.Controller;
+import com.poke.controller.PlantCalendarViewController;
 import com.poke.controller.PlantWaterController;
 import com.poke.controller.RegisterUserController;
 import com.poke.controller.UserLoginController;
@@ -19,6 +20,7 @@ public class HandlerMapping {
 		mappings.put("/viewMain.do", new ViewMainController());
 		mappings.put("/viewJoin.do", new ViewJoinController());
 		mappings.put("/plantwater.do", new PlantWaterController());
+		mappings.put("/plantCalendar.do", new PlantCalendarViewController());
 
 	}
 	
