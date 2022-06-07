@@ -32,7 +32,8 @@ public class frontContoller extends HttpServlet {
 		if (view != null) {
 			if (view.indexOf("redirect:/") != -1) {
 				response.sendRedirect(view.split(":/")[1]);
-			} else {
+			}else if(view.equals("NotPageMove")){} else {
+				
 				RequestDispatcher rd = request.getRequestDispatcher(ViewResolver.makeView(view));
 				rd.forward(request, response); 
 			}
