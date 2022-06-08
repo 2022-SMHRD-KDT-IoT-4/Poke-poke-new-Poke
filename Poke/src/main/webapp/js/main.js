@@ -83,8 +83,6 @@
 		});
 	};
 
-	
-
 	var contentWayPoint = function() {
 		var i = 0;
 		$('.animate-box').waypoint( function( direction ) {
@@ -312,6 +310,7 @@
 		sliderMain();
 		testimonialCarousel();
 	});
-
-
+	
 }());
+
+

@@ -1,3 +1,4 @@
+<%@page import="com.poke.domain.UserInfoVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -24,7 +25,7 @@
 
 	//////////////////////////////////////////////////////
 	 -->
-
+	
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -57,6 +58,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/join_style.css">
 
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -66,7 +68,14 @@
 
 	</head>
 	<body>
-		
+	<%
+		UserInfoVO vo = new UserInfoVO(); 
+		if(session.getAttribute("user")!=null){
+			vo = (UserInfoVO)session.getAttribute("user");
+		}else {
+			vo = null;
+		}
+	%>
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -105,7 +114,15 @@
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
-						<li><a href="#">LOGIN</a></li>
+						<%
+							if(vo!=null){
+								out.print("<li>"+vo.getNickname()+"</li>");
+							}else {
+								out.print("<li><a href='viewLogin.do'>LOGIN</a></li>");
+							}
+						%>
+							
+						
 					</ul>
 				</div>
 			</div>
@@ -113,51 +130,164 @@
 		</div>
 	</nav>
 	
-	<div class="join">
-		<div class="container">
-		  <div class="form_txtInput">
-			<h2 class="sub_tit_txt">LOGIN</h2>
-			<div class="join_form">
-			<form action="userLogin.do" method="post">
-			  <table>
-				<colgroup>
-				  <col width="60%"/>
-				  <col width="auto"/>
-				</colgroup>
-				<tbody>
-				  <tr>
-					<th><span>아이디</span></th>
-					<td><input type="text" name="id" placeholder="아이디를 입력하세요."></td>
-				  </tr>
-				  <tr>
-					<th><span>비밀번호</span></th>
-					<td><input type="password" name="password" placeholder="비밀번호를 입력해주세요."></td>
-				  </tr>
-				</tbody>
-			  </table>
-			<div class="btn_wrap">
-			<input type="submit" value="로그인">
-			</div>	
-			<div class="find_login">
-				<!-- 아이디 비번찾기창 아직 안만들었음~ -->
-				<a href="#">아이디</a> / <a href="#">비밀번호</a> 찾기
-				<br>
-				<a href="viewJoin.do">회원가입</a>
-			</div>
-		  </div> <!-- form_txtInput E -->
-		</div><!-- content E-->
-	  </div> <!-- container E -->
-	 </form>
+	<aside id="fh5co-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+		   	<li>
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+					<div class="join">
+						<div class="container">
+						  <div class="form_txtInput">
+							<h2 class="sub_tit_txt">회원 정보 수정</h2>
+							<div class="amend_form">
+							  <table class="table_amend">
+								<colgroup>
+								  <col width="60%"/>
+								  <col width="auto"/>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th><span>닉네임</span></th>                                          
+										<td><input type="button" class="btn_amend" id="trigger2" value="변경">
+											<div class="pop_nick_change"> 
+												<div class="modal2"> 
+													<form action="updateNickname.do" method="post"> <!--form-->
+														<span class="close-button1"></span> 
+													  <table>
+														  <tr>
+															  <td class="pop_text">닉네임 변경</td>
+														  </tr>
+														  <tr>
+														  	<%	
+														  		String nickName = "";
+														  		if(vo!=null){
+														  			nickName = vo.getNickname(); 
+														  		}else {
+														  			nickName = "닉네임 변경";
+														  		}
+														  	%>
+															  <td><input type="text" id="nowNickname" placeholder="<%=nickName %>"></td>
+														  </tr>
+														  <tr>
+															  <td colspan="2">
+															  <input type="text" id="changeNickname" class="changeNick" name="changeNickname" placeholder="새 닉네임">
+															  <font id = "checkNickname" size="2"></font>
+															</td>
+														  </tr>
+														</table> 
+														<div class="pop_btn_cancel"> 
+														  <input type="button" id="cancel1" value="취소"> 
+														  <input type="submit" id="submit1" value="수정하기"> 
+														</div>
+														
+													</form>  <!--form E-->
+												</div> 
+											</div> <!--팝업창-->
+										</td>
+									</tr>
+								
+								
+									<tr>
+										<th><span>비밀번호</span></th>
+										<td>
+											<input type="button" class="btn_amend" id="trigger" value="변경"> 
+										<div class="pop_pw_change"> 
+											<div class="modal2"> 
+												<form action="updatePassword.do" method="post"> 
+													<span class="close-button"></span> 
+												  <table>
+													  <tr>
+														  <td class="pop_text">비밀번호 변경</td>
+													  </tr>
+													  <tr>
+													  	<%	
+														  		String password = "";
+														  		if(vo!=null){
+														  			password = vo.getPassword(); 
+														  		}else {
+														  			password = "패스워드 변경";
+														  		}
+														  	%>
+														  <td><input type="password" id="nowPw" name="password" placeholder="<%=password %>"></td>
+													  </tr>
+													  <tr>
+														  <td>
+														  <input type="password" id="changePw1" class="changePw" name="changePassword" placeholder="새 비밀번호"></td>
+													  </tr>
+													  <tr>
+														  <td colspan="2">
+														  <input type="password" id="changePw2" class="changePw" placeholder="새 비밀번호 확인"></td>
+														  <font id = "checkChangePw" size="2"></font>
+													  </tr>
+													</table> 
+													<div class="pop_btn_cancel"> 
+													  <input type="button" id="cancel" value="취소"> 
+													  <input type="submit" id="submit2" value="수정하기"> 
+													</div>
+													
+												</form> 
+											</div> 
+										</div> <!--팝업창-->
+										</td>
+									</tr>
+								
+									<tr>
+										<th><span>이메일</span></th>
+										<td><input type="button" class="btn_amend" id="trigger3" value="변경">
+											<div class="pop_email_change"> 
+												<div class="modal2"> 
+													<form action="updateEmail.do" method="post"> 
+														<span class="close-button2"></span> 
+													  <table>
+														  <tr>
+															  <td class="pop_text">이메일 변경</td>
+														  </tr>
+														  <tr>
+														  <%	
+														  		String email = "";
+														  		if(vo!=null){
+														  			email = vo.getEmail(); 
+														  		}else {
+														  			email = "이메일 변경";
+														  		}
+														  	%>
+															  <td><input type="text" id="nowEmail" placeholder="<%=email %>"></td>
+														  </tr>
+														  <tr>
+															  <td colspan="2">
+															  <input type="text" id="changeEmail" class="changeMail" name="changeEmail" placeholder="새 이메일">
+															  <font id = "checkEmail" size="2"></font>
+															  </td>
+														  </tr>
+														</table> 
+														<div class="pop_btn_cancel"> 
+														  <input type="button" id="cancel2" value="취소"> 
+														  <input type="submit" id="submit3" value="수정하기"> 
+														</div>
+														
+													</form> 
+												</div> 
+											</div> <!--팝업창-->
+										</td>
+								  	</tr>
+								</form>
+								</tbody>
+							  </table>
+							<div class="btn_cancel">
+							  <input type="button" onclick="location.href='viewMyPage.do'" value="돌아가기">
+							</div>
+						  </div> <!-- form_txtInput E -->
+						</div><!-- content E-->
+					  </div> <!-- container E -->
+					</div>
+		   		</div>
+		   	</li>
+		  	</ul>
+	  	</div>
+	</aside>
 
-	</div>
-   </div>
-</li>
-</ul>
-</div>
-</aside>
 
-
-	<!-- footer -->
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
 			<div class="row row-pb-md">
@@ -237,6 +367,7 @@
 	<script src="js/jquery.flexslider-min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<script src="js/main2.js"></script>
 
 	</body>
 </html>

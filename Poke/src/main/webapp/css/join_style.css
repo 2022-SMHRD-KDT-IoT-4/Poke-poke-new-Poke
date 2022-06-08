@@ -21,11 +21,23 @@ ul{list-style:none; }
 .left_margin{margin:0 0 0 20px;}
 .con_term .term_txt div.txt_bold{font-weight: bold; margin:0 0 25px;}
 .btn_wrap{text-align:center; margin:40px 0 30px;}
+.btn_wrap a{color: #fff; background-color: #22421e; font-weight: bold; padding: 25px;  height: 30px; line-height: 0px; width: 168px; display: block; text-align: center; margin: 0 auto;}
+.btn_wrap a.wide{width:587px;margin: 0 0 0 10px;}
 .btn_wrap input{
-	border: none;
-	color: #fff; background-color: #22421e; font-weight: bold; padding: 25px;  height: 30px; line-height: 0px; width: 168px; display: block; text-align: center; margin: 0 auto;}
-.btn_wrap a{
-	color: #fff; background-color: #22421e; font-weight: bold; padding: 25px;  height: 30px; line-height: 0px; width: 168px; display: block; text-align: center; margin: 0 auto;}
+  color: #fff; 
+  background-color: #22421e; 
+  font-weight: bold; 
+  padding: 25px;  
+  height: 30px; 
+  line-height: 0px; 
+  width: 168px; 
+  display: block; 
+  text-align: center; 
+  margin: 0 auto;
+  border: none;
+
+
+}
 .btn_wrap input.wide{width:587px;margin: 0 0 0 10px;}
 .find_txt ul li{color:#9a9a9a;font-size:13px;text-align:center; line-height:17px; margin:0 0 20px;}
 .form_txtInput {
@@ -106,6 +118,7 @@ ul{list-style:none; }
   .exTxt{margin:0 0 25px 0px}
   .wrap.wd668.line .sub_tit_txt,.wrap .sub_tit_txt{margin:0 0 10px 0;}
   .btn_wrap a,.btn_wrap a.wide{width:auto;margin:0;}
+  .btn_wrap input,.btn_wrap input.wide{width:auto;margin:0;}
   .btn_wrap{overflow: hidden;}
   .join_form.idpwFind table td select{width:30%;height:37px; float:left;}
   .join_form.idpwFind table tr.email input:after,.mar10:after,  .join_form.idpwFind table td select:after{content:'';display: block;clear:both;}
@@ -113,3 +126,4 @@ ul{list-style:none; }
   .join_form table td a.btn_confirm{width: 100px; height: 35px;line-height: 35px; font-size: 12px;margin:5px 0 0 ;}
   .join_form table input.send_number + a{margin:0 0 0 5px;}
 }
+

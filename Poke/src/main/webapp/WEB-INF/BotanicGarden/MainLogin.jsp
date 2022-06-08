@@ -1,3 +1,4 @@
+<%@page import="com.poke.domain.UserInfoVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -65,7 +66,9 @@
 
 	</head>
 	<body>
-		
+	<%
+		UserInfoVO vo = (UserInfoVO)session.getAttribute("user");
+	%>
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -73,7 +76,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="Main.html">Botanic</a></div>
+					<div id="fh5co-logo"><a href="viewMain.do">Botanic</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
@@ -104,8 +107,8 @@
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
-						<li>🌻닉네임</a></li>
-						<li><a href="#">마이페이지</a></li>
+						<li>🌻<%=vo.getNickname() %></a></li>
+						<li><a href="viewMyPage.do">마이페이지</a></li>
 					</ul>
 				</div>
 			</div>
@@ -116,7 +119,7 @@
 	<aside id="fh5co-hero" class="js-fullheight">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
-		   	<li style="background-image: url(images/img_bg_1.jpg);">
+		   	<li style="background-image: url(images/img_bg_1.avif);">
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">

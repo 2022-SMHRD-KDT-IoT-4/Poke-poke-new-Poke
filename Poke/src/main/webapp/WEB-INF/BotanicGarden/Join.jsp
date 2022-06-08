@@ -75,7 +75,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="Main.html">Botanic</a></div>
+					<div id="fh5co-logo"><a href="viewMain.do">Botanic</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
@@ -152,7 +152,7 @@
 					<div class="join">
 						<div class="container">
 						  <div class="form_txtInput">
-							<h2 class="sub_tit_txt">JOIN</h2>
+							<h2 class="sub_tit_txt">회원가입</h2>
 							<div class="join_form">
 							<form action="registerUser.do" method="post">
 							  <table>
@@ -163,15 +163,20 @@
 								<tbody>
 								  <tr>
 									<th><span>아이디</span></th>
-									<td><input type="text" name="id" placeholder="아이디를 입력하세요."></td>
+									<td colspan="2"><input type="text" name="id" class="id" placeholder="아이디를 입력하세요.">
+									<font id = "checkId" size="2"></font>
+									</td>
 								  </tr>
 								  <tr>
 									<th><span>비밀번호</span></th>
-									<td><input type="password" name="password" placeholder="비밀번호를 입력해주세요."></td>
+									<td><input type="password" name="password" class="pw" id="pw1" placeholder="비밀번호를 입력해주세요."></td>
 								  </tr>
 								  <tr>
 									<th><span>비밀번호 확인</span></th>
-									<td><input type="password" name="password" placeholder="비밀번호를 확인하세요"></td>
+									<td colspan="2">
+										<input type="password" name="password" class="pw" id="pw2" placeholder="비밀번호를 확인하세요">
+										<font id = "checkPw" size="2"></font>
+									</td>
 								  </tr>
 								  <tr>
 									<th><span>닉네임</span></th>
