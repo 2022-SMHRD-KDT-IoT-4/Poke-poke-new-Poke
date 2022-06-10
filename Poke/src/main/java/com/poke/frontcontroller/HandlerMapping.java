@@ -18,6 +18,7 @@ import com.poke.controller.ViewLoginController;
 import com.poke.controller.ViewMainController;
 import com.poke.controller.ViewMainLoginController;
 import com.poke.controller.ViewMemAmendController;
+import com.poke.controller.ViewRecommendListController;
 
 public class HandlerMapping {
 	private HashMap<String, Controller> mappings;
@@ -40,6 +41,7 @@ public class HandlerMapping {
 		mappings.put("/updatePassword.do", new UpdatePasswordController());
 		mappings.put("/viewMainLogin.do", new ViewMainLoginController());
 		mappings.put("/viewMemAmend.do", new ViewMemAmendController());
+		mappings.put("/viewRecommendList.do", new ViewRecommendListController());
 	}
 	
 	public Controller getController(String command) {
