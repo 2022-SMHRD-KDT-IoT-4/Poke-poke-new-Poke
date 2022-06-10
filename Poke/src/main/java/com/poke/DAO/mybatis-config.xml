@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<typeAlias type="com.poke.domain.Garden" alias ="Garden"/>
 		<typeAlias type="com.poke.domain.Plant_care" alias ="Plant_care"/>
 		<typeAlias type="com.poke.domain.Plant_Garden" alias ="Plant_Garden"/>
+		<typeAlias type="com.poke.domain.RecommendVO" alias = "Recommend"/>
+		<typeAlias type="com.poke.domain.QuestionVO" alias = "Question"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -33,6 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<mapper resource="com/poke/DAO/PlantMapper.xml"/>
 			<mapper resource="com/poke/DAO/Plant_careMapper.xml"/>
 			<mapper resource="com/poke/DAO/GardenMapper.xml"/>
+			<mapper resource="com/poke/DAO/RecommendMapper.xml"/>
+			<mapper resource="com/poke/DAO/QuestionMapper.xml"/>
 		</mappers>		
 		
 
