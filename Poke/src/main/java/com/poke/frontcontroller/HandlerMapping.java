@@ -4,9 +4,12 @@ import java.util.HashMap;
 
 import com.poke.controller.Controller;
 import com.poke.controller.FileLocationLoadController;
+import com.poke.controller.PlantCaledarController;
 import com.poke.controller.PlantCalendarViewController;
 import com.poke.controller.PlantCareInsertController;
 import com.poke.controller.PlantCareUpdateController;
+import com.poke.controller.PlantCareViewController;
+import com.poke.controller.PlantInfoController;
 import com.poke.controller.PlantWaterController;
 import com.poke.controller.RegisterUserController;
 import com.poke.controller.UpdateEmailController;
@@ -36,11 +39,6 @@ public class HandlerMapping {
 		mappings.put("/viewMain.do", new ViewMainController());
 		mappings.put("/viewJoin.do", new ViewJoinController());
 		mappings.put("/viewLogin.do", new ViewLoginController());
-		mappings.put("/plantwater.do", new PlantWaterController());
-		mappings.put("/plantCalendar.do", new PlantCalendarViewController());
-		mappings.put("/plantCalendarInsert.do", new PlantCareInsertController());
-		mappings.put("/plantCalendarUpdate.do", new PlantCareUpdateController());
-		mappings.put("/plantCalendarView.do", new PlantCalendarViewController());
 		mappings.put("/updateEmail.do", new UpdateEmailController());
 		mappings.put("/updateNickname.do", new UpdateNicknameController());
 		mappings.put("/updatePassword.do", new UpdatePasswordController());
@@ -52,6 +50,15 @@ public class HandlerMapping {
 		mappings.put("/viewRecommendPlantList.do", new ViewRecommendPlantListController());
 		mappings.put("/viewQuestionList.do", new ViewQuestionListController());
 		mappings.put("/fileLocationLoad.do", new FileLocationLoadController());
+		// you
+		mappings.put("/plantwater.do", new PlantWaterController());
+		mappings.put("/plantCalendar.do", new PlantCalendarViewController());
+		mappings.put("/plantCalendarInsert.do", new PlantCareInsertController());
+		mappings.put("/plantCareUpdate.do", new PlantCareUpdateController());
+		mappings.put("/plantInfo.do", new PlantInfoController());
+		mappings.put("/plantCareView.do", new PlantCareViewController());
+		// 캘린더 페이지 실행
+		mappings.put("/plantCalendarView.do", new PlantCaledarController());
 	}
 	
 	public Controller getController(String command) {

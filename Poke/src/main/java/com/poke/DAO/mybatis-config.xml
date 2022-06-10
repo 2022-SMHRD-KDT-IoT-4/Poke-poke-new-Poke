@@ -33,10 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!--  Mapper 파일(sql 쿼리문을 가지고 있는 파일) 설정하기  -->
 		<!--  파일이 여러개 생성될 수 있다.  -->
 		<mappers>
-			<mapper resource="com/poke/DAO/UserInfoMapper.xml"/>
+		<!--  you -->
 			<mapper resource="com/poke/DAO/PlantMapper.xml"/>
 			<mapper resource="com/poke/DAO/Plant_careMapper.xml"/>
 			<mapper resource="com/poke/DAO/GardenMapper.xml"/>
+			<mapper resource="com/poke/DAO/UserInfoMapper.xml"/>
 			<mapper resource="com/poke/DAO/RecommendMapper.xml"/>
 			<mapper resource="com/poke/DAO/QuestionMapper.xml"/>
 			<mapper resource="com/poke/DAO/ChoiceMapper.xml"/>

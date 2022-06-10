@@ -84,7 +84,7 @@ public class GardenDAO {
 			plant_number=garden.getPlant_number();
 			plant_seq=garden.getPlant_seq();
 			
-			// 식물에 물주기 가져오기
+			// 식물에 물주기  가져오기
 			plant = dao.plantSelectOne(plant_number);
 			cycle = plant.getCycle();
 			plant_garden.setCycle(cycle);
@@ -105,15 +105,6 @@ public class GardenDAO {
 		return plant_care;
 		
 	}
-	
-	
-	
-	
-		
-		
-		
-		
-		
 		
 	}
 

@@ -53,6 +53,14 @@ public class Plant_careDAO {
 		session.close();
 	}
 	
+	// plant_care last_date로 diary 와 height 값 가져오기
+	public Plant_care plant_careView(String last_date) {
+		SqlSession session = sqlSessionFactory.openSession();
+		Plant_care plant_care = session.selectOne("plant_careView",last_date);
+		session.close();
+		return plant_care;
+	}
+	
 	
 	
 	

@@ -38,6 +38,15 @@
 	
 	</update>
 
+	<!-- plant_care last_date로 정보 가져오기 -->
+	<select id="plant_careView" resultType="Plant_care" >
+		select (select g.plant_nickname
+		from garden g
+		where g.plant_seq = p.plant_seq) as plant_nickname,
+		p.last_date, p.plant_diary, p.plant_height
+		from plant_care p
+		where to_char(last_date,'yyyy-mm-dd hh12:mi:ss') = #{last_date}
+	</select>
 
 
 </mapper>
