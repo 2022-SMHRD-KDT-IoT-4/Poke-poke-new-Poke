@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
@@ -28,15 +27,13 @@
          type : 'post',
          // data :{id = "id 보내줘야함"},
          success : function(res){
-            console.log(res);
             let list = "";
             $.each(res, function(index, res2){
 
                $.each(res2, function(index2,res3){
                   
-               list += "<a href ='javascript:goView(\""+res2[index2].last_date+"\")' >"+res2[index2].plant_nickname+"</a><br>";
+               list += "<a href ='javascript:goView(\""+res2[index2].plantcare_seq+"\")' >"+res2[index2].plant_nickname+"</a><br>";
                list += "<span>"+res2[index2].last_date+"</span><br>";
-              // plant_nickname.push =  res2[index2].plant_nickname;
                })
                
             })
@@ -58,7 +55,7 @@
 	         type : 'post',
 	         // data :{id = "id 보내줘야함"},
 	         success : function(res){
-	        	console.log(res);
+	            console.log(res);
 	            let list = "";
 	            $.each(res, function(index, res2){
 	               list += "<span><a ='javascript:goInsert(\""+res[index].last_date+"\")' >"+res[index].plant_nickname+"</a><input id = 'check1' onclick = 'goPlantCare()' type = 'checkbox'</span>"
@@ -68,9 +65,9 @@
 	            $("#nextWater").html(list);
 	         },
 	         error : function(){
-	            alert('error!');
+	            alert('error!')
 	         }
-	      });
+	      })
 	   }
 	
 	
@@ -99,23 +96,22 @@
 	
 
 		// 내용보여주는 함수
-		function goView(last_date) {
+		function goView(plantcare_seq) {
 
 			
 			$.ajax({
 				url : "plantCareView.do",
 				type : "get",
 				data : {
-					"last_date" : last_date
+					"plantcare_seq" : plantcare_seq
 				},
 				dataType : "json",
 				success : function(data) { // data = {    , "count":5}
-					console.log(data.plant_diary)
 					
 			
 							//$("#diary").text(data.plant_diary)
 				$("#diary").html("<textarea id = 't' rows = '7'  readonly class = 'form-control'>"
-				+ data.plant_diary + "</textarea><Br><span id = u><input type = 'button' class = 'btn_amend' id = 'update' onclick = 'goUpdate(\""+data.last_date+"\")'value = '변경'></span>")
+				+ data.plant_diary + "</textarea><Br><span id = u><input type = 'button' class = 'btn_amend' id = 'update' onclick = 'goUpdate(\""+data.plantcare_seq+"\")'value = '변경'></span>")
 				
 				},
 				error : function() {
@@ -127,25 +123,25 @@
 		
 		// 게시글 수정하기 위해 
 		
-		function goUpdate(last_date) {
+		function goUpdate(plantcare_seq) {
 			$("#t"  ).attr("readonly", false);
 
 			var newButton = "<button class ='btn btn-success btn-sm'   onclick='update(\""
-					+ last_date + "\")'>수정하기</button>"
+					+ plantcare_seq + "\")'>수정하기</button>"
 			
 			$("#u" ).html(newButton);
 
 		}
 		
 		
-		function update(last_date) {
+		function update(plantcare_seq) {
 			// idx, title, content
 			var content = $("#t").val();
 			$.ajax({
 				url : "plantCareUpdate.do",
 				type : "post",
 				data : {
-					"last_date" : last_date,
+					"plantcare_seq" : plantcare_seq,
 					"plant_diary" : content
 				},
 				success : getData,
