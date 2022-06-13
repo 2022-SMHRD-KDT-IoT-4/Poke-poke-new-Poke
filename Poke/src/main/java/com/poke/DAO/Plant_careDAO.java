@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.poke.domain.Plant_care;
+import com.poke.domain.PlantInsert;
 import com.poke.domain.Plant_Garden;
 
 public class Plant_careDAO {
@@ -36,7 +37,7 @@ public class Plant_careDAO {
 		session.close();
 		return nextDate; 
 	}
-	
+
 	public void plant_careInsert(Plant_care plant_care) {
 		SqlSession session = sqlSessionFactory.openSession();
 		session.insert("plant_careInsert", plant_care);
@@ -53,14 +54,20 @@ public class Plant_careDAO {
 		session.close();
 	}
 	
-	// plant_care last_date로 diary 와 height 값 가져오기
-	public Plant_care plant_careView(String last_date) {
+	// plant_care plantcare_Seq로 diary 와 height 값 가져오기
+	public Plant_care plant_careView(int plantcare_seq) {
 		SqlSession session = sqlSessionFactory.openSession();
-		Plant_care plant_care = session.selectOne("plant_careView",last_date);
+		Plant_care plant_care = session.selectOne("plant_careView",plantcare_seq);
 		session.close();
 		return plant_care;
 	}
 	
+	public void plantCareFirstInsert(PlantInsert plant) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.insert("plantCareFirstInsert", plant);
+		session.commit();
+		session.close();
+	}
 	
 	
 	

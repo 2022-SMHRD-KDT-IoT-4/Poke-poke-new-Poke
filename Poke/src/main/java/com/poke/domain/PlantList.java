@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Plant {
-	private String plant_nickname;
-	private int temperature;
-	private int humidity;
-	private float uv;
+public class PlantList {
+	private String plant_name;
 	private int cycle;
+
 }

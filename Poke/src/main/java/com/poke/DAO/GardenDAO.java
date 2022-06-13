@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.poke.domain.Garden;
 import com.poke.domain.Plant;
+import com.poke.domain.PlantInsert;
 import com.poke.domain.Plant_Garden;
 import com.poke.domain.Plant_care;
 
@@ -37,6 +38,7 @@ public class GardenDAO {
 		session.close();
 		return garden;
 	}
+	
 	// plant_seq를 가지고 plant_number 가져오기
 	
 	public Garden gardenSelectOne(int plant_seq) {
@@ -64,6 +66,7 @@ public class GardenDAO {
 	}
 	
 
+	
 	// 사용자별 키우는 식물 기르기 last_date와 사용자가 키우는 식물 종류 데이터 가져오기
 	public ArrayList<Plant_care> waterNext(String id) {
 		ArrayList<Plant_care> plant_care = new ArrayList<Plant_care>();
@@ -105,6 +108,32 @@ public class GardenDAO {
 		return plant_care;
 		
 	}
+
+	
+	// 식물 등록
+	public void plantInsert(PlantInsert plant) {
+		GardenInsert(plant);
+		Plant_care.plantCareFirstInsert(plant);
+	}
+	
+	// Gardeninsert 
+	public void GardenInsert(PlantInsert plant) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.insert("GardenInsert",plant);
+		session.commit();
+		session.close();
+	}
+	
+	// GardenDelete
+	public void GardenDelete(String Plant_nickname) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.delete("GardenDelete", Plant_nickname);
+		session.commit();
+		session.close();
+		
+	}
+	
+	
 		
 	}
 

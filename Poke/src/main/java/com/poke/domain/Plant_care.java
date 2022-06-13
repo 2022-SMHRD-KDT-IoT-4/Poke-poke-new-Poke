@@ -9,11 +9,12 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
+
 public class Plant_care {
-	@NonNull private String plant_nickname;
+	private int plantcare_seq;
+	private String plant_nickname;
 	private String last_date;
 	private String plant_diary;
 	private int plant_height;
-
+	
 }

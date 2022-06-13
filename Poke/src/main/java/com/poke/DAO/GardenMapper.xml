@@ -17,6 +17,16 @@
 	</select>
 	
 	
+	<insert id="GardenInsert" parameterType="PlantInsert">
+		insert into garden values(plant_seq.nextval, #{id}, (select plant_number from plant where plant_name = #{plant_name})
+,#{plant_nickname})
+	</insert>
+	
+	<delete id="GardenDelete" parameterType="String">
+		delete from garden where plant_nickname = #{plant_nickname}
+	</delete>
+	
+	
 	
 
 

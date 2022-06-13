@@ -19,28 +19,24 @@ public class PlantCalendarViewController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			
+
 		// 아이디 데이터 가져오기
 		String id = "admin";
 		// 식물 정보 가져오기
 		GardenDAO dao = new GardenDAO();
 		List<List> calendarList = dao.getAllPlantList(id);
-			
-		
-		// 객체 바인딩
-//		request.setAttribute("calendarList", calendarList);
+
+		System.out.println(calendarList);
+
 		Gson g = new Gson();
 		String json = g.toJson(calendarList);
-		
+
 		response.setContentType("text/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.print(json);
-		
-			
-		
-		
+
 		return "NotPageMove";
-		
+
 	}
 
 }

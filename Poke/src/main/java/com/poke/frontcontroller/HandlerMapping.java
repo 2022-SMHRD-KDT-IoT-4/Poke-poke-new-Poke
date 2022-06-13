@@ -9,7 +9,12 @@ import com.poke.controller.PlantCalendarViewController;
 import com.poke.controller.PlantCareInsertController;
 import com.poke.controller.PlantCareUpdateController;
 import com.poke.controller.PlantCareViewController;
+import com.poke.controller.PlantController;
+import com.poke.controller.PlantDelController;
+import com.poke.controller.PlantDelController;
 import com.poke.controller.PlantInfoController;
+import com.poke.controller.PlantInsertContoller;
+import com.poke.controller.PlantListController;
 import com.poke.controller.PlantWaterController;
 import com.poke.controller.RegisterUserController;
 import com.poke.controller.UpdateEmailController;
@@ -57,8 +62,13 @@ public class HandlerMapping {
 		mappings.put("/plantCareUpdate.do", new PlantCareUpdateController());
 		mappings.put("/plantInfo.do", new PlantInfoController());
 		mappings.put("/plantCareView.do", new PlantCareViewController());
+		mappings.put("/plantInsert.do", new PlantInsertContoller());
+		mappings.put("/palntList.do", new PlantListController());
+		mappings.put("/PlantDelete.do", new PlantDelController());
 		// 캘린더 페이지 실행
 		mappings.put("/plantCalendarView.do", new PlantCaledarController());
+		mappings.put("/plantView.do", new PlantController());
+		mappings.put("/plantDeleteView.do", new PlantDelController());
 	}
 	
 	public Controller getController(String command) {

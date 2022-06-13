@@ -17,11 +17,12 @@ public class PlantCareViewController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String last_date = request.getParameter("last_date");
-		Plant_careDAO dao = new Plant_careDAO();
-		Plant_care result = dao.plant_careView(last_date);
-		System.out.println(result);
 		
+		int plantcare_seq = Integer.parseInt(request.getParameter("plantcare_seq"));
+		Plant_careDAO dao = new Plant_careDAO();
+		Plant_care result = dao.plant_careView(plantcare_seq);
+
+		System.out.println(result);
 		
 		Gson g = new Gson();
 		String json = g.toJson(result);

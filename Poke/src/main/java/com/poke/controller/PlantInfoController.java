@@ -16,7 +16,8 @@ public class PlantInfoController implements Controller {
 			throws ServletException, IOException {
 		
 
-
+//		int humidity = 0;
+	//	int temperature = 0;
 		// 삭제할 것 
 		float uv = 0;
 		System.out.println(request.getParameter("outputVoltage"));

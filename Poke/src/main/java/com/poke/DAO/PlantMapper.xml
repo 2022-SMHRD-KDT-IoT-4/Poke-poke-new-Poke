@@ -6,10 +6,20 @@
 
 <mapper namespace="com.poke.DAO.PlantDAO">
 
-	
 	<!--  plant데이터 한 행 가져오기 -->
 	<select id = "plantSelectOne" resultType="Plant">
 		select * from plant where plant_number =#{plant_number}
+	</select>
+	
+	
+	<!--  plant 데이터 행 가져오기 -->
+	<select id="plantInfoSelectOne"  resultType = "Plant">
+		SELECT * FROM PLANT
+		WHERE PLANT_NUMBER = (SELECT PLANT_NUMBER FROM GARDEN WHERE PLANT_NICKNAME = #{plant_nickname}) 
+	</select>
+	
+	<select id="Plant_List" resultType = "PlantList">
+		select plant_name, cycle from plant
 	</select>
 	
 </mapper>
