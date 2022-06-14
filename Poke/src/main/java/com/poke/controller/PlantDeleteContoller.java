@@ -13,9 +13,10 @@ public class PlantDeleteContoller implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String plant_nickname = request.getParameter("plant_nickname");
+		
+		int plant_seq = Integer.parseInt(request.getParameter("plant_seq"));
 		GardenDAO dao = new GardenDAO();
-		dao.GardenDelete(plant_nickname);
+		dao.GardenDelete(plant_seq);
 		return "NotPageMove";
 	}
 

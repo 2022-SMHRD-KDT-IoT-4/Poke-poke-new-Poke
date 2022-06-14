@@ -23,7 +23,7 @@
 	</insert>
 	
 	<delete id="GardenDelete" parameterType="String">
-		delete from garden where plant_nickname = #{plant_nickname}
+		delete from garden where plant_seq = #{plant_seq}
 	</delete>
 	
 	
