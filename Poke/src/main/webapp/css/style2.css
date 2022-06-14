@@ -1,0 +1,653 @@
+@charset "UTF-8";
+
+/*팝업 0610*/
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  
+  /* 숨기기 */
+  z-index: -1;
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+  z-index: 1000;
+  transition: all .5s;
+}
+
+.window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+  
+  /* 임시 지정 */
+  width: 100px;
+  height: 100px;
+  
+  /* 초기에 약간 아래에 배치 */
+  transform: translate(-50%, -40%);
+}
+
+.show .popup {
+  transform: translate(-50%, -50%);
+  transition: all .5s;
+}
+
+
+
+
+/*여기까지 ****************/
+
+
+
+
+
+
+/** 캘린더 체크박스**********/
+
+.water_check{
+  margin: 0 auto;
+    padding-left: 78%;
+}
+
+.smallround {
+  position: relative;
+}
+
+.smallround label {
+  background-color: #fff; 
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.smallround label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.smallround input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.smallround input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.smallround input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+
+/* general styling */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f1f2f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.water_check {
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******plant_reg.html*/
+.plant_reg {
+    width: 100%;
+    height: 550px;
+    background-color: #598054;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*식물등록*/
+#plant_reg_add {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    border-spacing: 20px;
+    border-collapse: separate;
+}
+
+
+#plant_reg_add tr,#plant_reg_add td{
+    text-align: center;
+    vertical-align: middle;
+    width: 250px;
+    
+}
+
+#plant_reg_add ::placeholder{
+    color: rgb(255, 255, 255);
+}
+/****** 식물추가 화살표 색 흰색으로 ***/
+
+
+/*효과*/
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+.ad {
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid #032e0e;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.ad-input:focus {
+  border: 2px solid #89d0aa;
+}
+
+
+
+
+
+
+/*+버튼*/
+td.btn_Plant_reg_add{
+    position: absolute;
+    bottom: 8%;
+}
+
+
+/*확인버튼*/
+
+.btn_Plant_reg{
+    position: absolute;
+    left: 46.5%;
+    top: 45%;
+}
+
+/* .btn_Plant_reg input{
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-weight: bold;
+    width: 100%; 
+    background-color: #22421e;
+    border-radius: 5px;
+     border: none;
+     float: none;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    padding: 25px;
+    height: 30px;
+    line-height: 0px;
+    display: block;
+    text-align: center;
+    margin: auto;
+} */
+
+
+
+
+
+
+
+/******calendar.html*/
+
+/*Calendar 크기*/
+
+.calender_container{
+  width: 100%;
+  height: 100%;
+}
+
+ #calendar {
+   width: 60%;
+   position: absolute;
+   left: 20%;
+}
+
+
+/*캘린더 디자인*/
+events{
+  background-color: #22421e;
+  color: #ffffff;
+}
+
+ /*자동물주기 버튼*/
+
+ .switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+  
+  .switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+  
+  input:checked + .slider {
+    background-color: #66bb6a;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+    
+  
+  /* general styling */
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #f1f2f3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .btn_calendar_auto {
+    margin: 0 auto;
+    padding-left: 77%;
+  }
+
+
+  /*자동물주기 활성화 시 체크박스 활성화 시켜야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+  /******plant_problem.html*/
+
+  /*문제해결*/
+.plant_problem_container{
+  height: 1000px;
+  background-color: #f1f2f3
+
+}
+/* 
+** Layout, Text & Colors 
+*/
+
+.plant_problem {
+background-color: white;
+  position: relative;
+  left: 8%;
+  right: 10%;
+  top: 10%;
+  width: 1600px;
+  font-size: 18px;
+  height: 820px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.p_container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+/* Cards */
+.card-column {
+  width: 50%;
+  float: left;
+  padding: 4%;
+  box-sizing: border-box;
+}
+
+.column-1 {
+  padding-top: 100px;
+}
+
+.card {
+  width: 92%;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background: #EB5160;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 60px;
+}
+
+.border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  border: 1px solid #fff;
+  opacity: 0.5;
+  left: -6px;
+  top: -6px;
+}
+
+.title h1{
+  position: relative;
+  font-size:10mm;
+  top: 50px;
+  left: 50px;
+  color: black;
+}
+.card h1 {
+  position: relative;
+  padding: 190px 0px 100px 10px;
+  width: 90%;
+  color: black;
+}
+
+.card > img {
+  width: 310px;
+  height: 173px;
+  position: absolute;
+  top: -6%;
+  left: -6%;
+}
+
+.card-color-0 {
+  background-color: rgb(235, 235, 229);
+}
+
+.card-color-1 {
+  background-color: rgb(238, 232, 231);
+}
+
+.card-color-2 {
+  background-color: #d8e1d9;
+}
+
+.card-color-3 {
+  background-color: #e3e5ec;
+}
+
+/* The cover (expanding background) */
+.cover {
+  position: fixed;
+  background: #EB5160;
+  z-index: 100;
+  transform-origin: 50% 50%;
+}
+
+/* The open page content */
+.open-content {
+  width: 100%;
+  z-index: 110;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.open-content img {
+  position: relative;
+  width: 90%;
+  margin-left: 3%;
+  margin-top: 20px;
+  z-index: 5;
+}
+
+.open-content .text {
+  background: #fff;
+  margin-top: -56%;
+  padding: 60% 5% 5% 5%;
+  width: 80%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+
+.open-content .text h1, .open-content .text p {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.close-content {
+  display: block;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 30px;
+  height: 30px;
+}
+
+.close-content span {
+  background: #222;
+  width: 30px;
+  height: 6px;
+  display: block;
+  position: absolute;
+  top: 14px;
+}
+
+.x-1 {
+  transform: rotate(45deg);
+}
+
+.x-2 {
+  transform: rotate(-45deg);
+}
+
+/* 
+** Transitions
+*/
+
+.card {
+  transition: opacity 200ms linear 320ms, transform 200ms ease-out 320ms;
+}
+
+.border {
+  transition: opacity 200ms linear, transform 200ms ease-out;
+}
+
+.card img {
+  transition: opacity 200ms linear 0ms, transform 200ms ease-in 0ms;
+
+}
+
+.card h1 {
+  transform: translate3d(20%, 0px, 0px);  
+  transition: opacity 200ms linear 120ms, transform 200ms ease-in 120ms;
+  font-size: large;
+}
+
+/* Clicked card */
+.card.clicked img {
+  transform: translate3d(0px, -40px, 0px);
+  opacity: 0;
+}
+
+.card.clicked .border {
+  opacity: 0;
+  transform: scale(1.3);
+}
+
+.card.out, .card.out img {
+  transform: translate3d(0px, -40px, 0px);
+  opacity: 0;
+}
+
+.card.out h1, .card.clicked h1 {
+  transform: translate3d(20%, -40px, 0px);
+  opacity: 0;
+}
+
+.cover {
+  transition: transform 300ms ease-in-out;
+}
+
+.open-content {
+  transition: opacity 200ms linear 0ms;
+}
+
+.open-content.open {
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 1000ms;
+}
+
+/* 
+** Media Queries
+*/
+
+@media screen and (max-width: 600px) {
+  .card-column {
+    width: 90%;
+  }
+  
+  .column-1 {
+    padding-top: 0px;
+  }
+  
+  .open-content img {
+    margin-top: 40px;
+  }
+}
+
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:500");
+
+
+#btn_plnat_insert {
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
+  background: linear-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
+  background-size: 500%;
+  border: none;
+  border-radius: 5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  color: #fff;
+  cursor: pointer;
+  font: 1.5em Raleway, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 5rem;
+  letter-spacing: 0.05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 20rem;
+}
+
+#btn_plnat_insert:hover {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
