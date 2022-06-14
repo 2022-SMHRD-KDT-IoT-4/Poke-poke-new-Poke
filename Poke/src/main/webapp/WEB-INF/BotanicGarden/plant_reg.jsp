@@ -1,3 +1,4 @@
+<%@page import="com.poke.domain.UserInfoVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -64,6 +65,67 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		PlantList();
+	});
+	
+	
+	<% UserInfoVO vo =(UserInfoVO)session.getAttribute("user");%>
+	
+	
+	function palntInsert(){
+		var fPlant = $("#Plant").serialize();
+		$.ajax({
+			
+			url : 'plantInsert.do',	
+			type : 'post',
+			data : fPlant,
+			success : function(){
+				document.location.href = document.location.href;
+			},
+			error : function (){
+				alert("error")
+			}
+		});
+	}
+	
+	function PlantList(){
+		$.ajax({
+			url : 'palntList.do',
+			type : 'post',
+			dataType : "json",
+			success : function(data){
+				console.log(data);
+				let list = "";
+				list += "<input class='ad' list='plant_list' name='plant_name' id='plant_name' > ";
+				list += "<datalist id='plant_list' display = 'none'>";
+				$.each(data, function(index,res2){
+
+				
+					
+					list += "<option value = "+data[index].plant_name+" label = '물주기 : "+data[index].cycle+"일'>";
+				})
+				list+= "<option>추가</option>";
+				list+= "</datalist>"
+				
+				$("#plantList").html(list);
+			},
+			error : function(){
+				alert("error")
+			}
+		});
+	}
+
+	
+	
+	
+	</script>	
+	
 
 </head>
 
@@ -123,7 +185,7 @@
 
 
 		<!-- Search Start -->
-		<form>
+		<form id = "Plant">
 
 		
 		<div class="plant_reg">
@@ -131,28 +193,17 @@
 				<tr>
 					<td> <h3>식물 추가</h3> </td>
 					<td> <h3>애칭</h3> </td>
-					<td> <h3>물 주는 주기</h3> </td>
 					<td> <h3>마지막으로 물 준 날</h3> </td>
-					<td></td>
+					
 				</tr>
 
 				
 				<tr class="submit_add">
-					<td> <input class="ad" list="plant_list" name="plant" id="plants"> 
-						<datalist id="plant_list">
-							<option value="스투키" label="물주기 : n일">
-							<option value="몬스테라" label="물주기 : n일">
-							<option value="피쉬본" label="물주기 : n일">
-							<option value="율마" label="물주기 : n일">
-							<option>추가</option>
-					</datalist>
-					</td>
-					<td><input class="ad" type="text" name="nickname" placeholder="애칭을 입력해주세요."></td>
-					<td><input class="ad" type="number" min="0" max="100" name="cycle" placeholder="숫자로만 입력하세요."></td>
-					<!-- 오늘 이후 선택 안되도록 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-					<td><input class="ad" type="date" id="water"></td>
-					<td>
-					</td>
+					<td id = "plantList"></td> 
+					<td><input class="ad" type="text" name="plant_nickname" id = "plant_nickname" placeholder="애칭을 입력해주세요."></td>
+					<td><input class="ad" type="date" id="plant_lastdate" name ="plant_lastdate"></td>
+					<input type="hidden" name = 'id' value='<%=vo.getId() %>'>
+					
 				</tr>
 				
 			</table>
@@ -160,7 +211,7 @@
 			<!-- + 눌렀을 때 아래 추가한 값이 계속 나타날 수 있도록 설정해야 함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
 			<div class="btn_Plant_reg">
-				<input id = "btn_plnat_insert"type="submit" value="🌱등록">
+				<input id = "btn_plnat_insert" type="button" onclick ="palntInsert()" value="🌱등록">
 			 </div>
 	   
 			 

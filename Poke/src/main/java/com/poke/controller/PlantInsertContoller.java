@@ -15,11 +15,10 @@ public class PlantInsertContoller implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 아이디 받아오기,식물 이름 , 애칭, 마지막으로 물주는 날
-		String id = "admin";
+		String id = request.getParameter("id");
 		String plant_name = request.getParameter("plant_name");
 		String plant_nickname = request.getParameter("plant_nickname");
 		String plant_lastdate = request.getParameter("plant_lastdate");
-		
 		
 		
 		PlantInsert plant = new PlantInsert();
