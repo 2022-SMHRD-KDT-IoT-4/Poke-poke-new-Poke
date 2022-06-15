@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class PlantResult {
 	private String plant_nickname;
 	private String teperatureResult;
-	private String teperatureResultTTS;
+	private int teperatureResultTTS;
 	private String humidityResult;
-	private String humidityResultTTS;
+	private int humidityResultTTS;
 	private String uvResult;
-	private String uvResultTTS;
+	private int uvResultTTS;
 }

@@ -58,7 +58,7 @@
                console.log(res);
                let list = "";
                $.each(res, function(index, res2){
-            	   list += "<span><a>"+res[index].plant_nickname+"</a><input id = 'check1' onclick = 'goPlantCare()' type = 'checkbox'</span>"
+                  list += "<span><a>"+res[index].plant_nickname+"</a><input id = 'check1' onclick = 'goPlantCare()' type = 'checkbox'</span>"
                   list += "<span>"+res[index].last_date+"</span><br>";
                   
                })
