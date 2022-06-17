@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
+<% UserInfoVO vo =(UserInfoVO)session.getAttribute("user");%>
 <meta charset='utf-8' />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Shop &mdash; Free Website Template, Free HTML5 Template
@@ -30,17 +31,19 @@
 <script src='fullcalendar-5.11.0/lib/main.js'></script>
 
 <script type="text/javascript">
-var id =<%session.getAttribute("user"); %>
+
 var aJsonArray = new Array();
 var bJsonArray = new Array();
 var a;
-function getData(id) {
+var id1 = "<%=vo.getId()%>";
+console.log("id"+id1);
+function getData() {
   data1 = $.ajax({
        url : 'plantCalendar.do',
        method : 'post',
        dataType : "json",
-       data : {"id" :id }
-       async: false,
+       data : {"id" :id1 },
+       async: false
  });
   
   
@@ -63,7 +66,7 @@ function getData(id) {
 	    url : 'plantwater.do',
 	    type : 'post',
 	    dataType : 'json',
-	    data : {"id" :id},
+	    data : {"id" :id1},
 	   
 	    async: false,
 	 });      	  
@@ -461,7 +464,6 @@ function palntCareInsert(plant_nickname){
 <body>
 
 
-<% UserInfoVO vo =(UserInfoVO)session.getAttribute("user");%>
 
 
    

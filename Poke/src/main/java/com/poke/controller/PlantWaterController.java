@@ -25,6 +25,7 @@ public class PlantWaterController implements Controller {
 		
 
 		
+		System.out.println(id);
 		GardenDAO dao = new GardenDAO();
 		ArrayList<Plant_care> plant_care =dao.waterNext(id);
 		System.out.println(plant_care); // 물 줄 날과 식물 고유 번호 불러오기
