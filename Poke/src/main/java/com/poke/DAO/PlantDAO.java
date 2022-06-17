@@ -90,17 +90,21 @@ public void plant_temperatureInsert(Plant plant) {
 
 
 // plant 정보와 아두이노에 입력받은 데이터 비교하기
-public PlantResult  plant_compare(Plant plant) {
+public PlantResult plant_compare(Plant plant) {
 	PlantResult result = new PlantResult();
 	result.setPlant_nickname(plant.getPlant_nickname());
 	
 	Plant plantInfo = plantInfoSelectOne(plant.getPlant_nickname());
 	if (plant.getHumidity()<=plantInfo.getHumidity()) {
 		result.setHumidityResult("물 부족");
-	}  
+	}else {
+		result.setHumidityResult("안쌔요");
+	}
 		
 	if (plant.getTemperature() <=plantInfo.getTemperature()) {
 		result.setTeperatureResult("온도 낮음");
+	}else {
+		result.setTeperatureResult("안쌔요");
 	}
 		
 
@@ -116,9 +120,13 @@ public PlantResult  plant_compareUV(Plant plant) {
 	result.setPlant_nickname(plant.getPlant_nickname());
 	
 	Plant plantInfo = plantInfoSelectOne(plant.getPlant_nickname());
+	
 	if (plant.getUv()>=plantInfo.getUv()) {
-		result.setHumidityResult("빛이 셈");
-	}  
+		result.setUvResult("빛이 셈");
+	}else {
+		result.setUvResult("안쌔요");
+	}
+	System.out.println("plantinfo : "+result.getUvResult());
 		return result;
 }
 

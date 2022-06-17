@@ -24,14 +24,32 @@ public class PlantInfoTemperatureController implements Controller {
 			plant.setHumidity(humidity);
 			plant.setTemperature(temperature);
 			System.out.println("온도 : "+temperature);
+			System.out.println("토양 : "+humidity);
 			PlantDAO dao = new PlantDAO();
 			dao.plant_temperatureInsert(plant);
 			
 			PlantResult result = dao.plant_compare(plant);
-
+			if(result.getTeperatureResult()==null) {
+				result.setTeperatureResult("안쌔요");
+			}
+			if(result.getHumidityResult()==null) {
+				result.setHumidityResult("안쌔요");
+			}
+			Runtime runtime = Runtime.getRuntime();
 			if(result.getTeperatureResult().equals("온도 낮음")) {
 				//response.sendRedirect("http://192.168.137.80:5000/2");
+				try {
+					runtime.exec("explorer.exe http://192.168.137.80:5000/2");
+					Thread.sleep(2000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}else if(result.getHumidityResult().equals("물 부족")) {
+				try {
+					runtime.exec("explorer.exe http://192.168.137.80:5000/1");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				//response.sendRedirect("http://192.168.137.80:5000/1");
 			}
 

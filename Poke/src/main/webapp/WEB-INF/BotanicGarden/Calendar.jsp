@@ -586,6 +586,7 @@ function palntCareInsert(plant_nickname){
 
  <div class="calender_container">
  <div class="calender_bg">
+ <input type = "checkbox"> 
  <div class= "scriptCalendar_bg">
 
 

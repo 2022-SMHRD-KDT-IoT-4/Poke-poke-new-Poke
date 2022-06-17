@@ -30,11 +30,19 @@ public class PlantInfoUVController implements Controller {
 		PlantDAO dao = new PlantDAO();
 		dao.plant_uvInsert(plant);
 		
+		Runtime runtime = Runtime.getRuntime();
 		
 		PlantResult result = dao.plant_compareUV(plant);
-
+		if(result.getUvResult()==null) {
+			result.setUvResult("안쌔요");
+		}
 		if(result.getUvResult().equals("빛이 셈")) {
-			response.sendRedirect("http://192.168.137.80:5000/3");
+			try {
+				runtime.exec("explorer.exe http://192.168.137.80:5000/3");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			//response.sendRedirect("192.168.137.80:5000/3");
 		}
 
 		
