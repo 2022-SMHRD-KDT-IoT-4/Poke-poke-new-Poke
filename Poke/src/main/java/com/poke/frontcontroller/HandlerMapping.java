@@ -17,7 +17,9 @@ import com.poke.controller.PlantDeleteContoller;
 import com.poke.controller.PlantDelController;
 import com.poke.controller.PlantAutoWaterController;
 import com.poke.controller.PlantInfoTemperatureController;
+import com.poke.controller.PlantInfoTemperatureViewController;
 import com.poke.controller.PlantInfoUVController;
+import com.poke.controller.PlantInfoUVViewController;
 import com.poke.controller.PlantInsertContoller;
 import com.poke.controller.PlantListController;
 import com.poke.controller.PlantWaterController;
@@ -71,16 +73,20 @@ public class HandlerMapping {
 		mappings.put("/palntList.do", new PlantListController());
 		mappings.put("/PlantDelete.do", new PlantDeleteContoller());
 		mappings.put("/plantListView.do", new GardenListController());
-		
-		
-		
-		// 아두이노 신호
 		mappings.put("/plantInfoTemperature.do", new PlantInfoTemperatureController());
 		mappings.put("/plantInfoUV.do", new PlantInfoUVController());
+
+		
+		// 센서값 출력 
+		mappings.put("/plantTempueratureView.do", new PlantInfoTemperatureViewController());
+		mappings.put("/plantUVView.do", new PlantInfoUVViewController());
+		
+		// 아두이노 신호
+
 		mappings.put("/plantAutoWater.do", new PlantAutoWaterController());	
 		
 		
-		// 캘린더 페이지 실행
+		// 페이지 실행
 		mappings.put("/plantCalendarView.do", new PlantCaledarController());
 		mappings.put("/plantView.do", new PlantController());
 		mappings.put("/plantDeleteView.do", new PlantDelController());

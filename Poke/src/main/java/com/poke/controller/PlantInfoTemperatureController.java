@@ -16,45 +16,27 @@ public class PlantInfoTemperatureController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		// String plant_nickname;
-		
-		int humidity = -1;
-		int temperature = 0;
-		Plant plant = new Plant();
-		plant.setPlant_nickname("다롱이");
-	
-		if(request.getParameter("Soil_moisture")!=null) {
-			 humidity = Integer.parseInt(request.getParameter("Soil_moisture"));
-			System.out.println("토양습도 : "+humidity);
-			
-			plant.setHumidity(humidity);
-			double temperature1 = Double.parseDouble(request.getParameter("temperature"));
-			temperature = (int)temperature1;
-			plant.setTemperature(temperature);
-			System.out.println("온도 : "+temperature);
-			
-			
-			
-			PlantDAO dao = new PlantDAO();
-			PlantResult result=dao.plant_compare(plant);
-			System.out.println(result);
-			
-			 Gson g = new Gson();
-			 String json = g.toJson(result);
-			 
-			 response.setContentType("text/json;charset=utf-8");
-			 PrintWriter out = response.getWriter();
-			 out.print(json);
-			
-		}
-		
-		
-		
+			throws ServletException, IOException {		int humidity = Integer.parseInt(request.getParameter("Soil_moisture"));
+			int temperature = Integer.parseInt(request.getParameter("temperature"));
+			Plant plant = new Plant();
+			plant.setPlant_nickname("다롱이");
 
-				
-		return "NotPageMove";
+			plant.setHumidity(humidity);
+			plant.setTemperature(temperature);
+
+			PlantDAO dao = new PlantDAO();
+			dao.plant_temperatureInsert(plant);
+			
+			PlantResult result = dao.plant_compare(plant);
+
+			if(result.getTeperatureResult().equals("온도 낮음")) {
+				response.sendRedirect("http://192.168.137.80:5000/2");
+			}else if(result.getHumidityResult().equals("물 부족")) {
+				response.sendRedirect("http://192.168.137.80:5000/1");
+			}
+
+					
+			return "NotPageMove";
 	}
 
 }

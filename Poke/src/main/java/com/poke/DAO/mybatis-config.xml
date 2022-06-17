@@ -42,6 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<mapper resource="com/poke/DAO/PlantMapper.xml"/>
 			<mapper resource="com/poke/DAO/Plant_careMapper.xml"/>
 			<mapper resource="com/poke/DAO/GardenMapper.xml"/>
+			<mapper resource="com/poke/DAO/Plant_sensorMapper.xml"/>
 		<!--  min -->
 			<mapper resource="com/poke/DAO/UserInfoMapper.xml"/>
 			<mapper resource="com/poke/DAO/RecommendMapper.xml"/>

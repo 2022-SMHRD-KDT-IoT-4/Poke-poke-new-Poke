@@ -1,4 +1,5 @@
 package com.poke.controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -8,37 +9,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.poke.DAO.PlantDAO;
-import com.poke.controller.Controller;
-import com.poke.domain.Plant;
 import com.poke.domain.PlantResult;
 
-public class PlantInfoUVController implements Controller {
+public class PlantInfoTemperatureViewController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// String plant_nickname;
 		
-		float uv = Float.parseFloat(request.getParameter("outputVoltage"));
-
-		Plant plant = new Plant();
-		plant.setPlant_nickname("다롱이");
 		
-		plant.setUv(uv);
+		String plant_nickname = "다롱이";
 		
-
-
 		PlantDAO dao = new PlantDAO();
-		dao.plant_uvInsert(plant);
 		
-		
-		PlantResult result = dao.plant_compareUV(plant);
+		PlantResult result =dao.plant_compare(plant_nickname);
+		Gson g = new Gson();
+		String json= g.toJson(result);
 
-		if(result.getUvResult().equals("빛이 셈")) {
-			response.sendRedirect("http://192.168.137.80:5000/3");
-		}
+		response.setContentType("text/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(json);
 
-		
-
+				
 		return "NotPageMove";
 	}
 
