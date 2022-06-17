@@ -21,9 +21,8 @@ import com.poke.domain.Plant_Garden;
 public class PlantWaterController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String id = request.getParameter("id");
+		String id = request.getParameter("id");
 		
-		String id = "admin";
 
 		
 		GardenDAO dao = new GardenDAO();

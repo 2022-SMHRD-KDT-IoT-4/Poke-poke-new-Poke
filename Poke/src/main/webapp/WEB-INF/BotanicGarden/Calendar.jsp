@@ -30,16 +30,20 @@
 <script src='fullcalendar-5.11.0/lib/main.js'></script>
 
 <script type="text/javascript">
+var id =<%session.getAttribute("user"); %>
 var aJsonArray = new Array();
 var bJsonArray = new Array();
 var a;
-function getData() {
+function getData(id) {
   data1 = $.ajax({
        url : 'plantCalendar.do',
        method : 'post',
        dataType : "json",
+       data : {"id" :id }
        async: false,
  });
+  
+  
    
  
  data1.done(function(data){
@@ -59,6 +63,8 @@ function getData() {
 	    url : 'plantwater.do',
 	    type : 'post',
 	    dataType : 'json',
+	    data : {"id" :id},
+	   
 	    async: false,
 	 });      	  
  

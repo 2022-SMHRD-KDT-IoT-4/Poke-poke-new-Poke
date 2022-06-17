@@ -21,7 +21,7 @@ public class PlantCalendarViewController implements Controller {
 			throws ServletException, IOException {
 
 		// 아이디 데이터 가져오기
-		String id = "admin";
+		String id = request.getParameter("id");
 		// 식물 정보 가져오기
 		GardenDAO dao = new GardenDAO();
 		List<List> calendarList = dao.getAllPlantList(id);
