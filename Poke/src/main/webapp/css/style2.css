@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "utf-8";
 
 /*팝업 0610*/
 
@@ -110,6 +110,10 @@
 }
 
 
+
+
+
+
 /* general styling */
 html, body {
   height: 100%;
@@ -151,103 +155,206 @@ body {
 
 /******plant_reg.html*/
 .plant_reg {
-    width: 100%;
-    height: 550px;
-    background-color: #598054;
+    width: 1500px;
+    height: 600px;
+    position: relative;
+    right: 110%;
+    background-color: #d1d8be;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/*식물등록*/
-#plant_reg_add {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    border-spacing: 20px;
-    border-collapse: separate;
+
+
+
+/*타이틀*/
+
+.pr_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  
+}
+
+#pr_title{
+  font-size: 70px;
+  font-weight: bold;
+  height: 100px;
+  background: #cdb380;
+  background: -moz-linear-gradient(150deg, #cdb380 0%, #036564 16%, #033649 44%, #031634 84%);
+  background: -webkit-linear-gradient(150deg, #cdb380 0%, #036564 16%, #033649 44%, #031634 84%);
+  background: linear-gradient(150deg, #cdb380 0%, #036564 16%, #033649 44%, #031634 84%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cdb380",endColorstr="#031634",GradientType=1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  left: 400px;
+  top: 50px;
 }
 
 
-#plant_reg_add tr,#plant_reg_add td{
-    text-align: center;
-    vertical-align: middle;
-    width: 250px;
-    
-}
-
-#plant_reg_add ::placeholder{
-    color: rgb(255, 255, 255);
-}
-/****** 식물추가 화살표 색 흰색으로 ***/
-
-
-/*효과*/
-
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-
-.ad {
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  border-radius: 5px;
-  line-height: 22px;
-  background-color: transparent;
-  border: 2px solid #032e0e;
-  transition: all 0.3s;
-  padding: 13px;
-  margin-bottom: 15px;
-  width: 100%;
+.plant_reg{
   box-sizing: border-box;
-  outline: 0;
-}
-
-.ad-input:focus {
-  border: 2px solid #89d0aa;
 }
 
 
 
+.plant_reg_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+}
 
+.input_wrap {
+  position: relative;
+  width: 20rem;
+  margin: 3em auto 1em;
+}
+.input_wrap:first-child {
+  margin-top: 6em;
+}
 
-
-/*+버튼*/
-td.btn_Plant_reg_add{
-    position: absolute;
-    bottom: 8%;
+#plants + label, #nickname + label{
+  position: relative;
+  bottom: 10px;
+  right: 190px;
+  display: block;
+  height: 100%;
+  width: 110px;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  background: #709b6c;
+  color: rgb(0, 0, 0);
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  line-height: 40px;
+}
+#nickname + label{
+  position: relative;
+  bottom: 10px;
+  right: 150px;
+  display: block;
+  height: 100%;
+  width: 110px;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  background:#709b6c;
+  color: rgb(0, 0, 0);
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  line-height: 40px;
 }
 
 
-/*확인버튼*/
 
-.btn_Plant_reg{
-    position: absolute;
-    left: 46.5%;
-    top: 45%;
+#water + label {
+  position: relative;
+  bottom: 10px;
+  right: 160px;
+  display: block;
+  height: 100%;
+  width: 80%;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  background: #709b6c;
+  color: rgb(0, 0, 0);
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  line-height: 40px;
 }
 
-/* .btn_Plant_reg input{
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    font-style: italic;
-    font-weight: bold;
-    width: 100%; 
-    background-color: #22421e;
-    border-radius: 5px;
-     border: none;
-     float: none;
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-    transition: all 0.3s;
-    margin-top: -4px;
-    padding: 25px;
-    height: 30px;
-    line-height: 0px;
-    display: block;
-    text-align: center;
-    margin: auto;
-} */
+
+#plants {
+  width: 300px;
+  height: 40px;
+  position: relative;
+  top: 50px;
+  right: 80px;
+}
+#nickname {
+  width: 250px;
+  height: 40px;
+  position: relative;
+  top: 50px;
+  right: 40px;
+}
+
+
+#water {
+  width: 300px;
+  height: 40px;
+  position: relative;
+  top: 50px;
+  left: 40px;
+}
+
+
+
+.input_wrap + input {
+  height: 2.5rem;
+  width: 100%;
+  padding-left: 38%;
+  color: HSL(215, 21%, 24%);
+  border: 1px solid HSL(320, 69%, 53%);
+  transition: padding-left 0.3s ease;
+}
+
+.input_wrap + input:focus + label,
+.has_value {
+  background: transparent;
+  color: HSL(90, 44%, 71%);
+  transform: translate(-1.5em, -2.25em) scale(0.75);
+}
+
+.input_wrap + input:focus,
+.inp_hasvalue {
+  padding-left: 0.3em;
+  background: transparent;
+  color: white;
+  border-color: HSL(90, 44%, 71%);
+  outline: none;
+}
+
+.one{
+width: 250px;
+height: 40px;
+position: relative;
+right: 400px;
+}
+
+.two{
+width: 250px;
+height: 40px;
+position: relative;
+bottom: 90px;
+}
+
+.three{
+  width: 250px;
+  height: 40px;
+  position: relative;
+  bottom: 179px;
+  left: 400px;
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -258,7 +365,7 @@ td.btn_Plant_reg_add{
 /******calendar.html*/
 
 /*Calendar 크기*/
-
+/* 
 .calender_container{
   width: 100%;
   height: 100%;
@@ -272,62 +379,15 @@ td.btn_Plant_reg_add{
 
 
 /*캘린더 디자인*/
+/*
 events{
   background-color: #22421e;
   color: #ffffff;
-}
+} */
 
  /*자동물주기 버튼*/
-
- .switch {
-    display: inline-block;
-    height: 34px;
-    position: relative;
-    width: 60px;
-  }
-  
-  .switch input {
-    display:none;
-  }
-  
-  .slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    background-color: #fff;
-    bottom: 4px;
-    content: "";
-    height: 26px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 26px;
-  }
-  
-  input:checked + .slider {
-    background-color: #66bb6a;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-    
+ 
+ 
   
   /* general styling */
   html, body {
@@ -608,7 +668,7 @@ p {
 @import url("https://fonts.googleapis.com/css?family=Raleway:500");
 
 
-#btn_plnat_insert {
+#btn_plant_insert {
   -webkit-appearance: none;
   background: -webkit-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
   background: linear-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
@@ -630,6 +690,9 @@ p {
   -ms-user-select: none;
   user-select: none;
   width: 20rem;
+  position: relative;
+  top: 320px;
+  left: 42%;
 }
 
 #btn_plnat_insert:hover {
@@ -651,3 +714,194 @@ p {
     background-position: 100%;
   }
 }
+
+
+/*체크박스*/
+
+.round {
+  position: relative;
+  text-align: center;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 23px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  width: 23px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
+
+
+
+/*html캘린더*/
+
+
+.calender_container {
+  width: 100%;
+  height: 100%;
+}
+
+.calender_bg {
+   width : 1600px;
+   height: 1000px;
+   position: relative;
+   left : 8%;
+   right : 10%;
+   background-color:#ede0ab;  
+     
+}
+
+.scriptCalendar_bg {
+  width: 1000px;
+  height: 900px;
+  position: relative;
+  background-color: #29323f;
+  left : 19%;
+  top : 5%;
+}
+
+
+.scriptCalendar{
+  width: 840px;
+  height: 800px;
+  position: relative;
+  left : 8%;
+  top: 6%;
+}
+
+.scriptCalendar tr , .scriptCalendar td {
+  vertical-align : top;
+}
+
+.pn {
+	text-align : center;
+	
+}
+
+
+
+.scriptCalendar td {
+	width : 120px;
+	height : 100px;
+}
+
+
+#calMonth, #calYear, #cals {
+	color : #ede0ab;
+	font-size: 50px;
+	
+}
+#ctitle {
+	text-align: center;
+}
+
+.scriptCalendar #weekend td {
+	color : white;
+	height: 50px;
+	text-align: center;
+}
+
+/*팝업*/
+
+#t.form-control, #plant_diary.form-control{
+	width: 600px;
+	height: 200px;
+	resize : none;
+	position: relative;
+	left: 8%;
+}
+
+
+.modal-content{
+	width: 700px;
+	height: 520px;
+}
+
+
+.cm.header{
+	height: 70px;
+	background-color: #5cb85c;
+}
+
+
+h4.cm.title{
+	position : relative;
+	margin-top : 1%;
+	font-size: 30px;
+}
+
+div#u.modal-footer, div#u2.modal-footer{
+	position : relative;
+	top : 20%;
+	padding : none;
+}
+
+td input#plant_height {
+	position: relative;
+	left : 8%;
+	height: 33px;
+}
+.thatks{
+	border-radius:50%;
+}
+
+button.close {
+	height: 40px;
+	width: 40px;
+	font-size: 40px;
+	font-weight: bold;
+	position: relative;
+	top: 20%;
+	right: 2%;
+}
+
+.btn_amend {
+	width: 108px;
+	height: 44px;
+	background-color: #5cb85c;
+	font-size: 25px;
+	color : white;
+	border: none;
+}
+
+#diary, #bfrm {
+	height: 288px;
+}
+
+#recent_popup_table input{
+	height : 290px;
+}
+
+  

@@ -1,6 +1,8 @@
 <%@page import="com.poke.domain.UserInfoVO"%>
+<%@page import="com.poke.domain.UserChallVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -55,6 +57,7 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style3.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -62,18 +65,89 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	<script src="js/jquery.min.js"></script>
+	<script>
+	<%
+		UserInfoVO vo1 = new UserInfoVO();
+		if(session.getAttribute("user")!=null){
+			vo1 = (UserInfoVO)session.getAttribute("user");	
+		}
+	%>
+	$(document).ready(() => {
+		PlantListLoad("<%=vo1.getId() %>");
+	});
+	
+	function PlantDelete(plant_seq){
+		$.ajax({
+			url : "PlantDelete.do",
+			type : "get",
+			data : {"plant_seq" : plant_seq},
+			dataType : "json",
+			success : ReloadPage,
+			error : () => {
+				alert("error");
+			}
+		});
+	function ReloadPage(data){
+		alert("식물이 삭제되었습니다.");	
+		location.reload();
+	}
+		
+	}
+	function PlantListLoad(id) {
+		$.ajax({
+			url : "plantListView.do",
+			type : "get",
+			data : {"UserId" : id},
+			dataType : "json",
+			success : PlantListView,
+			error : () => {
+				alert("error");
+			}
+		});
+	}
+	function PlantListView(data){
+		let list = "<form action='PlantDelete.do' method='post'>";
+		list += "<div class='plantCard'>";
+		list += "<input type='radio' name='plantSel' id='slide_1' checked>";
+		$.each(data, function(index, list1){
+			if(index<data.length-1){
+				list += "<input type='radio' name='plantSel' id='slide_"+(index+2)+"'>";
+			}
+		})
+		list += "<input type='checkbox' id='slideImg'>";
+		list += "<div class='slider'>";
+		$.each(data, function(index, list2){
+			if(index<data.length){
+				list += "<label for='slide_"+(index+1)+"' class='slide slide_"+(index+1)+"'></label>";
+			}
+		})
+		list += "</div>";
+		$.each(data, function(index, list3){
+			if(index<data.length){
+				list += "<div class='inner_part' id='divcheck"+index+"'>";
+				list += "<label for='slideImg' class='plantImg'>";
+				list += "<img class='img_"+(index+1)+"' src='./images/darong"+index+".jpg'>"
+				list += "</label>";
+				list += "<div class='plantContent plantContent_"+(index+1)+"'>";
+				list += "<div class='plantTitle'>"+data[index].plant_nickname+"</div>"
+				list += "<div class='plantText'>";
+				list += "귀여운 "+data[index].plant_nickname+" 구경하세요💖";
+				list += "</div>";
+				list += "<button type='button' class='chb' onclick='PlantDelete("+data[index].plant_seq+")'>X</button>";
+				list += "</div></div>";
+			}
+		})
+		list += "</div>";
+		list += "</form>";	
+		$(".myPlantImg").html(list).trigger("create");
+		}	
+		
+		
+	</script>
 	</head>
 	<body>
-		<%
-			UserInfoVO vo = new UserInfoVO();
-			if(session.getAttribute("user")!=null){
-				vo = (UserInfoVO)session.getAttribute("user");	
-			}else {
-				vo = null;
-			}
-			
-		%>
+		
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -81,48 +155,33 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="viewMain.do">Botanic</a></div>
+					<div id="fh5co-logo"><a href="viewMain.do">Botanic Garden</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a href="product.html">식물등록</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
+							<a href="plantView.do">식물등록</a>
 						</li>
 						<li class="has-dropdown">
-							<a href="product.html">일정확인</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
+							<a href="plantCalendarView.do">일정확인</a>
 						</li>
-						<li><a href="about.html">식물추천</a></li>
+						<li><a href="viewRecommendList.do">식물추천</a></li>
 						<li class="has-dropdown">
-							<a href="services.html">문제해결</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
+							<a href="viewPlantProblem.do">문제해결</a>
 						</li>
-						<li><a href="contact.html">커뮤니티</a></li>
+						<li><a href="viewCommunityAll.do">커뮤니티</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 					<ul>
-						<!-- <li>🌻닉네임</a></li> -->
-						<li class="has-dropdown">
-							<%
-								if(vo!=null){
-									out.print("<li>🌻"+vo.getNickname()+"</li>");
-								}else {
-									out.print("<li>Login</li>");	
-								}
-							%>
-							
-						</li>
+						<%
+							if(vo1!=null){
+								out.print("🌻"+vo1.getNickname());
+							}else {
+								out.print("<li><a href='viewLogin.do'>LOGIN</a></li>");
+							}
+						%>
+						<li><a href="userLogout.do">로그아웃</a></li>
 						<li><a href="viewMyPage.do">마이페이지</a></li>
 					</ul>
 				</div>
@@ -131,343 +190,52 @@
 		</div>
 	</nav>
 
-	<!--프로필-->
-<div class="배경">
-	<div class="profile">
-		<div class="profile_container">
-			<div class="profile_img">
-				<img src="./images/img_profile.png">
-			</div>
-			<span class="profile_nicname">
-				<h3>신짱구</h3>
-			</span>
+<div class="myPage">
+	<div class="myPageProfile">
+		<h3>닉네임</h3>
 			<div class="btn_mem_amend">
-				
-				
-				<form action="userLogout.do" name="logout" method="post">
 				<button type="button" onclick="location.href='viewMemAmend.do';">회원정보수정</button>
-				<button id="btn_logout">로그아웃</button>
-				</form>
+				<button type="button" onclick="location.href='userLogout.do';">로그아웃</button>
 			</div>
-			<div class="profile_grade">
-				<img src="#" alt="등급이미지 돌겐내">
+			<div class="challenge2">
+				<h3>도전과제</h3>
 			</div>
+			<div class="challenge">
+			<div class="chal_checklist">
+				<div id="chal_checklist">
+					<input id="01" type="checkbox" name="r" value="01" class="a12" checked>
+					<label for="01">물 주기</label>
+					<input id="02" type="checkbox" name="r" value="02" class="b12">
+					<label for="02">영양제 주기</label>
+					<input id="03" type="checkbox" name="r" value="03" class="c12">
+					<label for="03">좋은말씀드리기</label>
+					<div class="container_graph">
+						<div class="progress">
+						  <div class="progress-bar"></div>
+						</div>
+					</div>
+				  </div>
+			</div>
+			</div>
+		<div class="myPlant">
+			<h3>나의 반려식물</h3>
 		</div>
-	</div>
-	
-	<!--나의 식물 정보-->
-	<div class="plant_info"></div>
-		<div class="plant_info2">
-			<h3>나의 식물 정보</h3>
-			<div class="btn_plant_amend">
-				<button type="button" onclick="location.href='식물정보수정';">식물정보수정</button>
-			</div>
+		<div class="myPlantBg">
+			<div class="myPlantImg">
+				
+	   
+				</div> 
+
+		
 		</div>
-	<div class="profile">
-		<div class="profile_container">
-			<div class="profile_img">
-				<img src="./images/img_profile.png">
-			</div> 
-	
-		</div> <!--profile container-->
-	</div> <!--profile-->
-	
-
-	
 
 
 
 
 
+	</div> <!--myPageProfile E-->
+</div> <!--myPage-->
 
-
-
-
-
-
-	
-	 <!-- <div id="fh5co-services" class="fh5co-bg-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-credit-card"></i>
-						</span>
-						<h3>Credit Card</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-wallet"></i>
-						</span>
-						<h3>Save Money</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 text-center">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="icon-paper-plane"></i>
-						</span>
-						<h3>Free Delivery</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>   -->
-	<!--
-	<div id="fh5co-product">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Cool Stuff</span>
-					<h2>Products.</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-1.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Hauteville Concrete Rocking Chair</a></h3>
-							<span class="price">$350</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-2.jpg);">
-							<span class="sale">Sale</span>
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Pavilion Speaker</a></h3>
-							<span class="price">$600</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-3.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Ligomancer</a></h3>
-							<span class="price">$780</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-4.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Alato Cabinet</a></h3>
-							<span class="price">$800</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-5.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Earing Wireless</a></h3>
-							<span class="price">$100</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 text-center animate-box">
-					<div class="product">
-						<div class="product-grid" style="background-image:url(images/product-6.jpg);">
-							<div class="inner">
-								<p>
-									<a href="single.html" class="icon"><i class="icon-shopping-cart"></i></a>
-									<a href="single.html" class="icon"><i class="icon-eye"></i></a>
-								</p>
-							</div>
-						</div>
-						<div class="desc">
-							<h3><a href="single.html">Sculptural Coffee Table</a></h3>
-							<span class="price">$960</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> 
--->
-<!--
-	<div id="fh5co-testimonial" class="fh5co-bg-section">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<span>Testimony</span>
-					<h2>Happy Clients</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="row animate-box">
-						<div class="owl-carousel owl-carousel-fullwidth">
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person1.jpg" alt="user">
-									</figure>
-									<span>Jean Doe, via <a href="#" class="twitter">Twitter</a></span>
-									<blockquote>
-										<p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person2.jpg" alt="user">
-									</figure>
-									<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-									<blockquote>
-										<p>&ldquo;Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimony-slide active text-center">
-									<figure>
-										<img src="images/person3.jpg" alt="user">
-									</figure>
-									<span>John Doe, via <a href="#" class="twitter">Twitter</a></span>
-									<blockquote>
-										<p>&ldquo;Far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-									</blockquote>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="fh5co-counter" class="fh5co-bg fh5co-counter" style="background-image:url(images/img_bg_5.jpg);">
-		<div class="container">
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-3 col-sm-6 animate-box">
-							<div class="feature-center">
-								<span class="icon">
-									<i class="icon-eye"></i>
-								</span>
-
-								<span class="counter js-counter" data-from="0" data-to="22070" data-speed="5000" data-refresh-interval="50">1</span>
-								<span class="counter-label">Creativity Fuel</span>
-
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 animate-box">
-							<div class="feature-center">
-								<span class="icon">
-									<i class="icon-shopping-cart"></i>
-								</span>
-
-								<span class="counter js-counter" data-from="0" data-to="450" data-speed="5000" data-refresh-interval="50">1</span>
-								<span class="counter-label">Happy Clients</span>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 animate-box">
-							<div class="feature-center">
-								<span class="icon">
-									<i class="icon-shop"></i>
-								</span>
-								<span class="counter js-counter" data-from="0" data-to="700" data-speed="5000" data-refresh-interval="50">1</span>
-								<span class="counter-label">All Products</span>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 animate-box">
-							<div class="feature-center">
-								<span class="icon">
-									<i class="icon-clock"></i>
-								</span>
-
-								<span class="counter js-counter" data-from="0" data-to="5605" data-speed="5000" data-refresh-interval="50">1</span>
-								<span class="counter-label">Hours Spent</span>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fh5co-started">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Newsletter</h2>
-					<p>Just stay tune for our latest Product. Now you can subscribe</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2">
-					<form class="form-inline">
-						<div class="col-md-6 col-sm-6">
-							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<button type="submit" class="btn btn-default btn-block">Subscribe</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
-</div>
 	
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
@@ -548,6 +316,8 @@
 	<script src="js/jquery.flexslider-min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<!-- Main2 -->
+	<script src="js/main2.js"></script>
 
 	</body>
 </html>

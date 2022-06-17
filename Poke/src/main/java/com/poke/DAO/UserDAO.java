@@ -56,4 +56,22 @@ public class UserDAO {
 		session.close();
 		return row;
 	}
+	public UserInfoVO FindId(String email) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		UserInfoVO vo = session.selectOne("FindId", email);
+		session.close();
+		return vo;
+	}
+	public UserInfoVO FindPasswordCheck(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		UserInfoVO result = session.selectOne("FindPasswordCheck", vo);
+		session.close();
+		return result;
+	}
+	public int ChangePassword(UserInfoVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int row = session.update("ChangePassword", vo);
+		session.close();
+		return row;
+	}
 }

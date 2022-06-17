@@ -172,11 +172,11 @@ input {
   line-height: normal;
 }
 
-input[type="checkbox"],
+/* input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
-}
+} */
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -2215,24 +2215,24 @@ input[type="search"] {
   margin-left: 10px;
 }
 
-input[type="radio"][disabled], input[type="radio"].disabled, fieldset[disabled] input[type="radio"],
+/* input[type="radio"][disabled], input[type="radio"].disabled, fieldset[disabled] input[type="radio"],
 input[type="checkbox"][disabled],
 input[type="checkbox"].disabled, fieldset[disabled]
 input[type="checkbox"] {
   cursor: not-allowed;
-}
+} */
 
-.radio-inline.disabled, fieldset[disabled] .radio-inline,
+/* .radio-inline.disabled, fieldset[disabled] .radio-inline,
 .checkbox-inline.disabled, fieldset[disabled]
 .checkbox-inline {
   cursor: not-allowed;
-}
+} */
 
-.radio.disabled label, fieldset[disabled] .radio label,
+/* .radio.disabled label, fieldset[disabled] .radio label,
 .checkbox.disabled label, fieldset[disabled]
 .checkbox label {
   cursor: not-allowed;
-}
+} */
 
 .form-control-static {
   padding-top: 11px;

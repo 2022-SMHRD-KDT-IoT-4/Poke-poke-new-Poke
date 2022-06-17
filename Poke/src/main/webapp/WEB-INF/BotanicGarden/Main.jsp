@@ -1,12 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.poke.domain.UserInfoVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+	<title>Botanic Garden</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -56,6 +55,8 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style3.css">
+	<link rel="stylesheet" href="css/style_dayeon.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -63,7 +64,6 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	</head>
 	<body>
 	<%
@@ -84,13 +84,19 @@
 		   		<div class="container">
 		   			<div class="main_join">
 						<p>BOTANIC GARDEN</p>
-						<%
-							if(vo!=null){%>
-								 <button type="submit" id="btn_login" onclick="location.href='viewMainLogin.do'">시작하기</button>
-							<%}else {%>
-								<button type="submit" id="btn_login" onclick="location.href='viewLogin.do'">로그인</button>
-							<% }%>
-
+						<div id="dayeon_button">
+							  <%
+							  	if(vo!=null){%>
+							  		<button class="learn-more" onclick="location.href='viewMainLogin.do'">
+							  	<% } else {%>
+							  		<button class="learn-more" onclick="location.href='viewLogin.do'">
+							  	<%} %>
+							  <span class="circle" aria-hidden="true">
+								<span class="icon arrow"></span>
+							  </span>
+									<span class="button-text">Garden Start</span>							  		
+							</button>
+						  </div>
 					</div>
 		   		</div>
 		   	</li>
@@ -98,7 +104,7 @@
 	  	</div>
 	</aside>
 
-	<div id="fh5co-services" class="fh5co-bg-section">
+	<!-- <div id="fh5co-services" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-sm-4 text-center">
@@ -376,7 +382,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
@@ -457,6 +463,9 @@
 	<script src="js/jquery.flexslider-min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	<!-- Main2 -->
+	<script src="js/main2.js"></script>
+	
 	</body>
 </html>
+

@@ -125,7 +125,7 @@ public class GardenDAO {
 	}
 	
 	// GardenDelete
-	public void GardenDelete(int plant_seq) {
+	public void GardenDelete(String plant_seq) {
 		SqlSession session = sqlSessionFactory.openSession();
 		session.delete("GardenDelete", plant_seq);
 		session.commit();

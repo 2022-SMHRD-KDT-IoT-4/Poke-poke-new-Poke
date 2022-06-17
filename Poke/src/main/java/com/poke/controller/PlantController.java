@@ -11,7 +11,7 @@ public class PlantController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		return "Plant";
+		return "plant_reg";
 
 	}
 

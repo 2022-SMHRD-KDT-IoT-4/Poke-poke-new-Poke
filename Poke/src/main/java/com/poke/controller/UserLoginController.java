@@ -21,7 +21,6 @@ public class UserLoginController implements Controller {
 		String pw = request.getParameter("password");
 		
 		UserInfoVO user = new UserInfoVO(id, pw);
-		
 		UserDAO dao = new UserDAO();
 		UserInfoVO result = dao.UserLogin(user);
 		HttpSession session = request.getSession();

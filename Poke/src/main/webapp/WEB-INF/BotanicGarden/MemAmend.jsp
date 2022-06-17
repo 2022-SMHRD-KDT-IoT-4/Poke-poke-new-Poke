@@ -56,6 +56,7 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style3.css">
 	<link rel="stylesheet" href="css/join_style.css">
 
 
@@ -83,25 +84,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="viewMain.do">Botanic</a></div>
+					<div id="fh5co-logo"><a href="viewMain.do">Botanic Garden</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
 							<a href="product.html">식물등록</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
 						</li>
 						<li class="has-dropdown">
-							<a href="product.html">일정확인</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
+							<a href="plantCalendarView.do">일정확인</a>
 						</li>
 						<li><a href="about.html">식물추천</a></li>
 						<li class="has-dropdown">
-							<a href="services.html">문제해결</a>
+							<a href="viewPlantProblem.do">문제해결</a>
 							<ul class="dropdown">
 								<li><a href="#">Web Design</a></li>
 								<li><a href="#">eCommerce</a></li>
@@ -109,7 +104,7 @@
 								<li><a href="#">API</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">커뮤니티</a></li>
+						<li><a href="viewCommunityAll.do">커뮤니티</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">

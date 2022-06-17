@@ -26,7 +26,7 @@ public class RegisterUserController implements Controller {
 		if(row > 0) {
 			System.out.println("회원가입 성공!");
 		}
-		return "MainLogin";
+		return "Login";
 	}
 
 }

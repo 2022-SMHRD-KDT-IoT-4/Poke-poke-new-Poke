@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shop &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+	<title>Botanic Garden</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords"
@@ -94,6 +94,7 @@
 		});
 	}
 	
+	
 	function PlantList(){
 		$.ajax({
 			url : 'palntList.do',
@@ -102,18 +103,15 @@
 			success : function(data){
 				console.log(data);
 				let list = "";
-				list += "<input class='ad' list='plant_list' name='plant_name' id='plant_name' > ";
-				list += "<datalist id='plant_list' display = 'none'>";
+				list += "<input list='plant_list' id='plants' name = 'plant_name' placeholder='식물을 선택해주세요' data-inp='0' />";
+				list += " <label for='plants'>식물 추가</label>";
+				list += "<datalist id=plant_list>";
 				$.each(data, function(index,res2){
-
-				
-					
 					list += "<option value = "+data[index].plant_name+" label = '물주기 : "+data[index].cycle+"일'>";
 				})
-				list+= "<option>추가</option>";
-				list+= "</datalist>"
-				
-				$("#plantList").html(list);
+				list+= "<option>'추가'</option>";
+				list += "</datalist>";
+				$("#plantdatalist").html(list);
 			},
 			error : function(){
 				alert("error")
@@ -138,43 +136,35 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-2">
-						<div id="fh5co-logo"><a href="Main.html">Botanic Garden</a></div>
+						<div id="fh5co-logo"><a href="viewMain.do">Botanic Garden</a></div>
 					</div>
 					<div class="col-md-6 col-xs-6 text-center menu-1">
 						<ul>
 							<li class="has-dropdown">
-								<a href="product.html">식물등록</a>
-								<ul class="dropdown">
-									<li><a href="single.html">single</a></li>
-								</ul>
+								<a href="plantView.do">식물등록</a>
 							</li>
 							<li class="has-dropdown">
-								<a href="product.html">일정확인</a>
-								<ul class="dropdown">
-									<li><a href="single.html">single</a></li>
-								</ul>
+								<a href="plantCalendarView.do">일정확인</a>
 							</li>
-							<li><a href="about.html">식물추천</a></li>
+							<li><a href="viewRecommendList.do">식물추천</a></li>
 							<li class="has-dropdown">
-								<a href="services.html">문제해결</a>
-								<ul class="dropdown">
-									<li><a href="#">Web Design</a></li>
-									<li><a href="#">eCommerce</a></li>
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">API</a></li>
-								</ul>
+								<a href="viewPlantProblem.do">문제해결</a>
 							</li>
-							<li><a href="contact.html">커뮤니티</a></li>
+							<li><a href="viewCommunityAll.do">커뮤니티</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
 						<ul>
-							<!-- <li>🌻닉네임</a></li> -->
 							<li class="has-dropdown">
-							<li><a>🌻닉네임</a></li>
-							<li><a href="#">로그아웃</a></li>
-							<li><a href="#">마이페이지</a></li>
-							</li>
+							<%
+								if(vo!=null){
+									out.print("🌻"+vo.getNickname());
+								}else {
+									out.print("<li><a href='viewLogin.do'>LOGIN</a></li>");
+								}
+							%>
+							<li><a href="userLogout.do">로그아웃</a></li>
+							<li><a href="viewMyPage.do">마이페이지</a></li>
 						</ul>
 					</div>
 				</div>
@@ -185,33 +175,40 @@
 
 
 		<!-- Search Start -->
-		<form id = "Plant">
+		<form id="Plant">
 
-		
-		<div class="plant_reg">
-			<table id="plant_reg_add">
-				<tr>
-					<td> <h3>식물 추가</h3> </td>
-					<td> <h3>애칭</h3> </td>
-					<td> <h3>마지막으로 물 준 날</h3> </td>
-					
-				</tr>
+      
+      <div class="plant_reg">
 
-				
-				<tr class="submit_add">
-					<td id = "plantList"></td> 
-					<td><input class="ad" type="text" name="plant_nickname" id = "plant_nickname" placeholder="애칭을 입력해주세요."></td>
-					<td><input class="ad" type="date" id="plant_lastdate" name ="plant_lastdate"></td>
-					<input type="hidden" name = 'id' value='<%=vo.getId() %>'>
-					
-				</tr>
-				
-			</table>
+            <section class="pr_title">
+             <h1 id="pr_title">Registing your plant.</h1>
+            </section>
+
+         <div class="plant_reg_container">
+            <div class="input_wrap">
+               <div class="one" id='plantdatalist'>
+              
+      </div>
+            </div>
+            <div class="input_wrap">
+               <div class="two">
+              <input type="text" name="plant_nickname" id="nickname" placeholder="애칭을 입력해주세요." data-inp="1" />
+              <label for="nickname">애칭</label>
+            </div>
+            </div>
+            <div class="input_wrap">
+               <div class="three">
+              <input type="date" name="plant_lastdate" id="water" placeholder="연도-월-일" data-inp="2" />
+              <label for="water">마지막으로 물 준 날</label>
+				<input type="hidden" name ='id' value='<%=vo.getId() %>'>
+            </div>
+         </div>
+           </div>
 
 			<!-- + 눌렀을 때 아래 추가한 값이 계속 나타날 수 있도록 설정해야 함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
 			<div class="btn_Plant_reg">
-				<input id = "btn_plnat_insert" type="button" onclick ="palntInsert()" value="🌱등록">
+				<input id = "btn_plant_insert" type="button" onclick ="palntInsert()" value="🌱등록">
 			 </div>
 	   
 			 

@@ -55,6 +55,7 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style3.css">
 	<link rel="stylesheet" href="css/join_style.css">
 
 
@@ -75,33 +76,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="viewMain.do">Botanic</a></div>
+					<div id="fh5co-logo"><a href="viewMain.do">Botanic Garden</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a href="product.html">식물등록</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
+							<a href="plantView.do">식물등록</a>
 						</li>
 						<li class="has-dropdown">
-							<a href="product.html">일정확인</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
+							<a href="plantCalendarView.do">일정확인</a>
 						</li>
-						<li><a href="about.html">식물추천</a></li>
+						<li><a href="viewRecommendList.do">식물추천</a></li>
 						<li class="has-dropdown">
-							<a href="services.html">문제해결</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
+							<a href="viewPlantProblem.do">문제해결</a>
 						</li>
-						<li><a href="contact.html">커뮤니티</a></li>
+						<li><a href="viewCommunityAll.do">커뮤니티</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
@@ -121,33 +110,7 @@
 		   		<div class="overlay-gradient"></div>
 		   		<div class="container">
 		   			<div class="join">
-					<!-- 중복확인 하기 -->
-					<!-- <form action="MainLogin.html" method="post">
-						<div class="textForm"> 
-						<input type="text" class="join_id" name="id" placeholder="아이디를 입력하세요">
-						<button id="btn_id_check" onclick="btn_id_check()">중복확인</button>
-						</div>
-						<br><br><br>
-						<div class="textForm"> 
-						<input type="password" class="join_pw" name="password" placeholder="비밀번호를 입력하세요">
-						</div>
-						<br><br><br>
-						<div class="textForm"> 
-						<input type="password" class="join_pw_check" name="password" placeholder="비밀번호를 입력하세요">
-						</div>
-						<br><br><br>
-						<div class="textForm"> 
-						<input type="text" class="join_nickname" name="nickname" placeholder="닉네임을 입력하세요">
-						<button id="btn_nickname_check" onclick="btn_nickname_check()">중복확인</button>
-						</div>
-						<br><br><br>
-						<div class="textForm"> 
-						<input type="email" class="join_email" name="email" placeholder="이메일을 입력하세요">
-						</div>
-						<br><br><br>
-						<input type="submit" name="Join_success" value="회원가입">
-						<button id="btn_id_check" onclick="btn_id_check()">취소</button>
-					</form> -->
+					
 
 					<div class="join">
 						<div class="container">

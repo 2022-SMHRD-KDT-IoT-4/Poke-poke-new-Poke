@@ -131,13 +131,15 @@ public PlantResult plant_compare(String plant_nickname) {
 	Plant plantInfo = plantInfoSelectOne(plant_nickname);
 	Plant plant_sensor = plantTemperatureSelectOne(plant_nickname);
 	
-	if (plant_sensor.getHumidity()<=plantInfo.getHumidity()) {
-		result.setHumidityResult("물 부족");
-	}  
+	//if (plant_sensor.getHumidity()<=plantInfo.getHumidity()) {
+		//result.setHumidityResult("물 부족");
+		result.setHumidityResult("물이 부족해요! 💧💧💧💧💧💧💧💧💧");
+	//}  
 		
-	if (plant_sensor.getTemperature() <=plantInfo.getTemperature()) {
-		result.setTeperatureResult("온도 낮음");
-	}
+	//if (plant_sensor.getTemperature() <=plantInfo.getTemperature()) {
+		//result.setTeperatureResult("온도 낮음");
+		result.setTeperatureResult("온도가 낮아요 🌡🌡🌡🌡🌡🌡🌡🌡🌡🌡");
+	//}
 		return result;
 }
 
@@ -151,9 +153,11 @@ public PlantResult plant_compareUV(String plant_nickname) {
 	Plant plantInfo = plantInfoSelectOne(plant_nickname);
 	Plant plant_uvsensor = plantUvSelectOne(plant_nickname);
 	
-	if (plant_uvsensor.getUv() >= plantInfo.getUv()) {
-	result.setUvResult("빛이 셈");
-	}
+	//if (plant_uvsensor.getUv() >= plantInfo.getUv()) {
+	//result.setUvResult("빛이 셈");
+	result.setUvResult("빛이 쌔요 🔥🔥🔥🔥🔥🔥🔥🔥");
+	//}
+
 	return result;
 }
 

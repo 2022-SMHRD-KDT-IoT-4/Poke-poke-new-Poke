@@ -22,4 +22,13 @@
 	<update id="UpdateEmail" parameterType="User">
 		update User_Info set email = #{email} where id = #{id}
 	</update>
+	<select id="FindId" resultType="User">
+		select * from User_Info where email = #{email}		
+	</select>
+	<select id="FindPasswordCheck" parameterType="User" resultType="User">
+		select * from User_Info where email = #{email} and id = #{id}
+	</select>
+	<update id="ChangePassword" parameterType="User">
+		update User_Info set password = #{password} where id = #{id}
+	</update>
 </mapper>

@@ -28,12 +28,6 @@ public class PlantListController implements Controller {
 	 PrintWriter out = response.getWriter();
 	 out.print(json);
 	
-	 
-		
-		
-		
-		
-		
 		return "NotPageMove";
 	}
 
