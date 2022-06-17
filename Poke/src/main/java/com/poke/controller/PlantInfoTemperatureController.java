@@ -16,23 +16,23 @@ public class PlantInfoTemperatureController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {		int humidity = Integer.parseInt(request.getParameter("Soil_moisture"));
-			int temperature = Integer.parseInt(request.getParameter("temperature"));
+			throws ServletException, IOException {		int humidity =  (int)Double.parseDouble(request.getParameter("Soil_moisture"));
+			int temperature = (int)Double.parseDouble(request.getParameter("temperature"));
 			Plant plant = new Plant();
 			plant.setPlant_nickname("다롱이");
 
 			plant.setHumidity(humidity);
 			plant.setTemperature(temperature);
-
+			System.out.println("온도 : "+temperature);
 			PlantDAO dao = new PlantDAO();
 			dao.plant_temperatureInsert(plant);
 			
 			PlantResult result = dao.plant_compare(plant);
 
 			if(result.getTeperatureResult().equals("온도 낮음")) {
-				response.sendRedirect("http://192.168.137.80:5000/2");
+				//response.sendRedirect("http://192.168.137.80:5000/2");
 			}else if(result.getHumidityResult().equals("물 부족")) {
-				response.sendRedirect("http://192.168.137.80:5000/1");
+				//response.sendRedirect("http://192.168.137.80:5000/1");
 			}
 
 					

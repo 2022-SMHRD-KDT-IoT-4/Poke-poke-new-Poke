@@ -18,13 +18,13 @@ public class PlantInfoUVController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		float uv = Float.parseFloat(request.getParameter("outputVoltage"));
-
+		float uv = Float.parseFloat(request.getParameter("outputVoltage"));	
 		Plant plant = new Plant();
 		plant.setPlant_nickname("다롱이");
 		
 		plant.setUv(uv);
 		
+		System.out.println("UV : "+uv);
 
 
 		PlantDAO dao = new PlantDAO();
