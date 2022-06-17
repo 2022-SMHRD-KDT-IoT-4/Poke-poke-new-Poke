@@ -84,11 +84,8 @@
 						</li>
 						<li class="has-dropdown">
 							<a href="plantCalendarView.do">일정확인</a>
-							<ul class="dropdown">
-								<li><a href="single.html">single</a></li>
-							</ul>
 						</li>
-						<li><a href="about.html">식물추천</a></li>
+						<li><a href="viewRecommendList.do">식물추천</a></li>
 						<li class="has-dropdown">
 							<a href="viewPlantProblem.do">문제해결</a>
 							<ul class="dropdown">
