@@ -27,6 +27,7 @@ public class frontContoller extends HttpServlet {
 		
 		HandlerMapping mappings = new HandlerMapping();
 		controller = mappings.getController(command);
+		
 		view = controller.execute(request, response);
 		
 		if (view != null) {

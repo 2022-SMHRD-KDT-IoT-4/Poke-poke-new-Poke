@@ -451,7 +451,40 @@ function palntCareInsert(plant_nickname){
     	    $("#bfrm").html(list);
     	    $("#u2").html(list2);
              };
+             
+             
+        // 자동 물주기 체크박스
+             
+             function goToggle(){
+     			
+
+     			const checkbox = document.getElementById('autoWater');
+     			const is_checked = checkbox.checked;
+     			
+     			goAutoWater(is_checked);
+
+     			
+     			
+     		}
         
+     			function goAutoWater(is_checked){
+     			console.log(is_checked);
+     				
+     				$.ajax({
+     				
+     					url : "plantAutoWater.do",
+     					type : "post",
+     					data : {
+     						"AutoWaterSelect" : is_checked
+     					},
+     					success : getData,
+     					error : function(){
+     						alert("error");
+     					}
+     					
+     				})
+     				
+     			}
    
     
     
@@ -514,7 +547,6 @@ function palntCareInsert(plant_nickname){
 
 
 
-      <!--전체 자동 물주기 버튼 on/off-->
    
 
 
@@ -586,7 +618,7 @@ function palntCareInsert(plant_nickname){
 
  <div class="calender_container">
  <div class="calender_bg">
- <input type = "checkbox"> 
+ <input type = "checkbox" id = "autoWater" onClick="goToggle()"> 
  <div class= "scriptCalendar_bg">
 
 

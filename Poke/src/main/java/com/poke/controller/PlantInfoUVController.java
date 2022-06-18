@@ -38,7 +38,7 @@ public class PlantInfoUVController implements Controller {
 		}
 		if(result.getUvResult().equals("빛이 셈")) {
 			try {
-				runtime.exec("explorer.exe http://192.168.137.80:5000/3");
+				//runtime.exec("explorer.exe http://192.168.137.80:5000/3");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -19,15 +19,18 @@ public class PlantAutoWaterController implements Controller {
 			throws ServletException, IOException {
 		
 
-		String autoWater = request.getParameter("AutoWaterSelect");
-		String id = "admin";
 		
+	//	String autoWater = request.getParameter("AutoWaterSelect");
+		String autoWater = "true";
+		
+		
+		System.out.println(autoWater);
+		String id = "admin";
 		String result = "";
 		AutoWater vo = new AutoWater(id, autoWater);
 		GardenDAO dao = new GardenDAO();
 		
-		if (autoWater.equals("Ture")) { 
-			
+		if (autoWater.equals("true")) {
 			result = "{\"MOTOR\":\"1\"}";}
 		else {
 			result = "{\"MOTOR\":\"0\"}";
@@ -38,15 +41,9 @@ public class PlantAutoWaterController implements Controller {
 		
 			out.print(result);
 		
-
+			
 		//("{\"MOTOR\":\"1\"\"SECONDS\":\"3\"}"
 		return "NotPageMove";
-		
-		
-		
-		
-		
-		
 		
 	}
 
