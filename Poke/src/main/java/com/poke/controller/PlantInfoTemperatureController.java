@@ -39,7 +39,7 @@ public class PlantInfoTemperatureController implements Controller {
 			if(result.getTeperatureResult().equals("온도 낮음")) {
 				//response.sendRedirect("http://192.168.137.80:5000/2");
 				try {
-					//runtime.exec("explorer.exe http://192.168.137.80:5000/2");
+					runtime.exec("explorer.exe http://192.168.137.80:5000/2");
 					Thread.sleep(3000);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class PlantInfoTemperatureController implements Controller {
 			}
 			if(result.getHumidityResult().equals("물 부족")) {
 				try {
-					//runtime.exec("explorer.exe http://192.168.137.80:5000/1");
+					runtime.exec("explorer.exe http://192.168.137.80:5000/1");
 					//Thread.sleep(2000);
 				} catch (Exception e) {
 					e.printStackTrace();

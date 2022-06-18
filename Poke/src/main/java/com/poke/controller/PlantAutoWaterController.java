@@ -30,6 +30,7 @@ public class PlantAutoWaterController implements Controller {
 		AutoWater vo = new AutoWater(id, autoWater);
 		GardenDAO dao = new GardenDAO();
 		
+
 		if (autoWater.equals("true")) {
 			result = "{\"MOTOR\":\"1\"}";}
 		else {
